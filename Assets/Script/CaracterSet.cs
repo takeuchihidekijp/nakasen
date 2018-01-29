@@ -1,17 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CaracterSet : MonoBehaviour {
 
 
-    public bool zooming;
-    public float zoomSpeed;
-    public Camera camera;
+    public Camera mainCamera;
+    public Camera strategyCamera;
 
-    public GameObject Caracter;
+    public GameObject prefab;
 
-    private Vector3 ClickPosition;
 
 
 	// Use this for initialization
@@ -23,23 +22,28 @@ public class CaracterSet : MonoBehaviour {
 	void Update () {
 
 
+        // マウスクリック
         if (Input.GetMouseButtonDown(0))
         {
-            Camera camera = GetComponent<Camera>();
+            // マウス座標と指定カメラからの Rayを作成
+            Ray ray = strategyCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
 
-            // Vector3でマウスがクリックした位置座標を取得する
-            ClickPosition = Input.mousePosition;
+            // ray と何か（オブジェクト）がヒットするか？
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+            {
 
-            ClickPosition.z = 5f;
+                // 何かにヒットしたら if に入る
 
-            Vector3 instancePos = camera.ScreenToWorldPoint(ClickPosition);
-            //落ちないY座標を指定
-            instancePos.y = 1;
+                if (hit.collider.gameObject.tag == "Floor")
+                {
+                    // フロアーにヒットしたらキャラを配置
+                    Instantiate(prefab, hit.point + Vector3.up * 2.0f,prefab.transform.rotation);
 
-            // オブジェクト生成 : オブジェクト(GameObject), 位置(Vector3), 角度(Quaternion)
-            // ScreenToWorldPoint(位置(Vector3))：スクリーン座標をワールド座標に変換する
-            Instantiate(Caracter, instancePos, Caracter.transform.rotation);
+                }
+            }
         }
 
     }
+
 }

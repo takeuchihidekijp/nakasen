@@ -354,7 +354,7 @@ GameObject:
   - component: {fileID: 826701657}
   - component: {fileID: 826701656}
   - component: {fileID: 826701655}
-  - component: {fileID: 826701659}
+  - component: {fileID: 826701660}
   m_Layer: 0
   m_Name: StorategyCamera
   m_TagString: Untagged
@@ -425,7 +425,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 65.93, y: 0, z: 0}
---- !u!114 &826701659
+--- !u!114 &826701660
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -436,10 +436,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b235122bcff562a49bc1c865ebf8865b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zooming: 0
-  zoomSpeed: 0
-  camera: {fileID: 826701657}
-  Caracter: {fileID: 1975012295392598, guid: 900021905b0309e4f8a428c1958678bc, type: 2}
+  mainCamera: {fileID: 99014882}
+  strategyCamera: {fileID: 826701657}
+  prefab: {fileID: 1744622037425466, guid: 900021905b0309e4f8a428c1958678bc, type: 2}
 --- !u!1 &1593378705
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,7 +492,7 @@ GameObject:
   - component: {fileID: 1841342725}
   m_Layer: 0
   m_Name: Stage
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
