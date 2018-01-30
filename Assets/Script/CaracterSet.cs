@@ -37,8 +37,12 @@ public class CaracterSet : MonoBehaviour {
 
                 if (hit.collider.gameObject.tag == "Floor")
                 {
-                    // フロアーにヒットしたらキャラを配置
-                    Instantiate(prefab, hit.point + Vector3.up * 2.0f,prefab.transform.rotation);
+                    if(hit.collider.gameObject.tag != "Character")
+                    {
+                        // フロアーにヒットしたらキャラを配置
+                        Instantiate(prefab, hit.point + Vector3.up * 2.0f, prefab.transform.rotation);
+                    }
+
 
                 }
             }
