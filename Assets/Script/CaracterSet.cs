@@ -37,10 +37,28 @@ public class CaracterSet : MonoBehaviour {
 
                 if (hit.collider.gameObject.tag == "Floor")
                 {
-                    if(hit.collider.gameObject.tag != "Character")
+                    // フローアにいる全キャラクターを取得（重いがクリックしたときのみなので）
+                    Character[] characters = FindObjectsOfType<Character>();
+
+                    bool putable = true;
+
+                    //全キャラクター分ループ
+                    foreach (var character in characters)
                     {
-                        // フロアーにヒットしたらキャラを配置
-                        Instantiate(prefab, hit.point + Vector3.up * 2.0f, prefab.transform.rotation);
+                        //各キャラクターとの距離を測る
+                        Vector3 dist = character.transform.position - hit.point;
+
+                        //近い場合キャラクターの作成フラグをオフ
+                        if (dist.magnitude < 0.8f)
+                        {
+                            putable = false;
+                        }
+
+                    }
+
+                    if (putable == true)
+                    {
+                        Instantiate(prefab, hit.point + Vector3.up * 0.6f, prefab.transform.rotation);
                     }
 
 
