@@ -13,7 +13,6 @@ public class Character : MonoBehaviour {
 	void Update () {
         Character[] characters = FindObjectsOfType<Character>();
 
-        GameObject target;
         float dist = 9999f;
         foreach (var character in characters)
         {
@@ -23,7 +22,6 @@ public class Character : MonoBehaviour {
                 if (dist > d.magnitude)
                 {
                     dist = d.magnitude;
-                  //  target = character;
                 }
             }
         }
