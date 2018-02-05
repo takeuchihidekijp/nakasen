@@ -11,6 +11,26 @@ public class Character : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        Character[] characters = FindObjectsOfType<Character>();
+
+        GameObject target;
+        float dist = 9999f;
+        foreach (var character in characters)
+        {
+            if (character.tag == "Enemy")
+            {
+                Vector3 d = this.transform.position - character.transform.position;
+                if (dist > d.magnitude)
+                {
+                    dist = d.magnitude;
+                  //  target = character;
+                }
+            }
+        }
+
+        if (dist < 10f)
+        {
+            // 追いかけるなど
+        }
+    }
 }
