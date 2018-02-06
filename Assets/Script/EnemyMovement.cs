@@ -34,6 +34,6 @@ public class EnemyMovement : MonoBehaviour {
 
     void SetRandomDestination()
     {
-        nav.SetDestination(new Vector3(Random.Range(-5.0f, 5.0f), 0, Random.Range(10.0f, -10.0f)));
+        nav.SetDestination(new Vector3(Random.Range(-5.0f, 5.0f), 0, Random.Range(0.0f, 10.0f)));
     }
 }

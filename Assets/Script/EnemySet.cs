@@ -6,7 +6,7 @@ public class EnemySet : MonoBehaviour {
 
     public GameObject prefab;
 
-    [SerializeField] float m_interval = 1.5f;
+    [SerializeField] float m_interval = 15.0f;
     float m_timer;
 
     // Use this for initialization
