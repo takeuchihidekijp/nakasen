@@ -34,6 +34,15 @@ public class EnemyMovement : MonoBehaviour {
 
     void SetRandomDestination()
     {
-        nav.SetDestination(new Vector3(Random.Range(-5.0f, 5.0f), 0, Random.Range(0.0f, 10.0f)));
+        //   nav.SetDestination(new Vector3(Random.Range(-5.0f, 5.0f), 0, Random.Range(0.0f, 10.0f)));
+        if (!nav.SetDestination(new Vector3(Random.Range(-5.0f, 5.0f), 0, Random.Range(0.0f, 10.0f))))
+        {
+            // SetDestination() に失敗した時は情報を出す
+            System.Text.StringBuilder builder = new System.Text.StringBuilder();
+            builder.AppendLine("NavMeshAgent.SetDestination failed.");
+            builder.AppendLine("name: " + gameObject.name);
+            builder.AppendLine("position: " + transform.position.ToString());
+            Debug.LogError(builder.ToString());
+        }
     }
 }
