@@ -35,10 +35,10 @@ public class EnemySet : MonoBehaviour {
     {
         const int RetryMax = 3;
         //仮
-        int EnemyCount = 2;
+     //   int EnemyCount = 2;
 
-        for (int i = 0; i < EnemyCount; i++)
-        {
+ //       for (int i = 0; i < EnemyCount; i++)
+ //       {
             for (int j = 0; j < RetryMax; j++)
             {
                 Ray ray = new Ray(new Vector3(Random.Range(-10, 10), 20, Random.Range(10, 20)),Vector3.down);
@@ -83,7 +83,7 @@ public class EnemySet : MonoBehaviour {
 
                 }
             }
-        }
+   //     }
 
             //    Vector3 pos = new Vector3(Random.Range(-5.0f, 5.0f), 0, Random.Range(10.0f, 20.0f));
 
