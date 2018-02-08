@@ -31,4 +31,5 @@ public class Character : MonoBehaviour {
             // 追いかけるなど
         }
     }
+
 }

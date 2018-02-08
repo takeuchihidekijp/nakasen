@@ -9,7 +9,7 @@ public class EnemySet : MonoBehaviour {
     /// <summary>敵のカウンター。敵のオブジェクト名を unique にするために使う</summary>
     int enemyCounter;
 
-    [SerializeField] float m_interval = 15.0f;
+    [SerializeField] float m_interval = 30.0f;
     float m_timer;
 
     // Use this for initialization
@@ -33,16 +33,68 @@ public class EnemySet : MonoBehaviour {
 
     void CreateEnemy()
     {
-    //    Vector3 pos = new Vector3(Random.Range(-5.0f, 5.0f), 0, Random.Range(10.0f, 20.0f));
+        const int RetryMax = 3;
+        //仮
+        int EnemyCount = 2;
 
-     //   Instantiate(prefab, pos, Quaternion.identity);
+        for (int i = 0; i < EnemyCount; i++)
+        {
+            for (int j = 0; j < RetryMax; j++)
+            {
+                Ray ray = new Ray(new Vector3(Random.Range(-10, 10), 20, Random.Range(10, 20)),Vector3.down);
 
-        Vector3 pos = new Vector3(Random.Range(-5.0f, 5.0f), 0, Random.Range(10.0f, 20.0f));
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+                {
+                    if (hit.collider.gameObject.tag == "Floor")
+                    {
+
+                        // フローアにいる全キャラクターを取得（重いがクリックしたときのみなので）
+                        Enemy[] Enemys = FindObjectsOfType<Enemy>();
+
+                        bool putable = true;
+
+                        //全キャラクター分ループ
+                        foreach (var enemy in Enemys)
+                        {
+                            //各キャラクターとの距離を測る
+                            Vector3 dist = enemy.transform.position - hit.point;
+
+                            //近い場合キャラクターの作成フラグをオフ
+                            if (dist.magnitude < 0.8f)
+                            {
+                                putable = false;
+                            }
+
+                        }
+
+                        if(putable == true)
+                        {
+                         //   Vector3 pos = new Vector3(Random.Range(-5.0f, 5.0f), 0, Random.Range(10.0f, 20.0f));
+                            Instantiate(prefab, hit.point + Vector3.up * 0.6f, Quaternion.identity);
+                        }
+
+
+
+                        break;
+
+                    }
+
+                }
+            }
+        }
+
+            //    Vector3 pos = new Vector3(Random.Range(-5.0f, 5.0f), 0, Random.Range(10.0f, 20.0f));
+
+            //   Instantiate(prefab, pos, Quaternion.identity);
+
+        //    Vector3 pos = new Vector3(Random.Range(-5.0f, 5.0f), 0, Random.Range(10.0f, 20.0f));
 
         // Instantiate(prefab, pos, Quaternion.identity);
-        GameObject go = Instantiate(prefab, pos, Quaternion.identity);
-        go.name = prefab.name + enemyCounter;   // 敵のオブジェクト名は prefab 名 + 数字とする
-        enemyCounter++;
+    //    GameObject go = Instantiate(prefab, pos, Quaternion.identity);
+    //    go.name = prefab.name + enemyCounter;   // 敵のオブジェクト名は prefab 名 + 数字とする
+    //    enemyCounter++;
     }
 
 }
