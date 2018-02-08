@@ -50,7 +50,7 @@ public class EnemySet : MonoBehaviour {
                     if (hit.collider.gameObject.tag == "Floor")
                     {
 
-                        // フローアにいる全キャラクターを取得（重いがクリックしたときのみなので）
+                        // フローアにいる全キャラクターを取得（重いが）
                         Enemy[] Enemys = FindObjectsOfType<Enemy>();
 
                         bool putable = true;
