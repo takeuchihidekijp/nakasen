@@ -562,7 +562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 99014882}
   strategyCamera: {fileID: 826701657}
-  prefab: {fileID: 1744622037425466, guid: 900021905b0309e4f8a428c1958678bc, type: 2}
+  prefab: {fileID: 1181124414777330, guid: 8f4f3a69a6f19934f961285308c25d3b, type: 2}
 --- !u!1 &1356938804
 GameObject:
   m_ObjectHideFlags: 0
