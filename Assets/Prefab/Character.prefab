@@ -2361,7 +2361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dd376c1bfdca5a448df53590b0fe2d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_searchAngle: 0
+  m_searchAngle: 240
 --- !u!114 &114794973600554622
 MonoBehaviour:
   m_ObjectHideFlags: 1
