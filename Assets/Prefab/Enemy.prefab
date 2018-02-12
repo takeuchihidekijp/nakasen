@@ -20,6 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4478302537549818}
   - component: {fileID: 135115001028526700}
+  - component: {fileID: 114667004999703086}
+  - component: {fileID: 114373781531498514}
   m_Layer: 2
   m_Name: SerchCollider
   m_TagString: Untagged
@@ -42,8 +44,6 @@ GameObject:
   - component: {fileID: 195040765396475128}
   - component: {fileID: 114258354001435568}
   - component: {fileID: 114326601459102024}
-  - component: {fileID: 114158604233512632}
-  - component: {fileID: 114428459622021362}
   m_Layer: 10
   m_Name: Enemy
   m_TagString: Untagged
@@ -146,17 +146,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114158604233512632
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1744622037425466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e65493fa50bf3b4ea28624a6e7464c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114258354001435568
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -180,18 +169,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44bf9e1ff3489224686c4cc56520035a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114428459622021362
+--- !u!114 &114373781531498514
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1744622037425466}
+  m_GameObject: {fileID: 1158448626474796}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4dd376c1bfdca5a448df53590b0fe2d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_searchAngle: 176
+  m_searchAngle: 0
+--- !u!114 &114667004999703086
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1158448626474796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e65493fa50bf3b4ea28624a6e7464c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135115001028526700
 SphereCollider:
   m_ObjectHideFlags: 1
