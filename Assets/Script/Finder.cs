@@ -17,11 +17,21 @@ public class Finder : MonoBehaviour {
 
     private void OnFound (GameObject i_foundObject)
     {
-        Debug.Log("OnFound");
+        System.Text.StringBuilder builder = new System.Text.StringBuilder();
+        builder.AppendLine("OnFound");
+        builder.AppendLine("name: " + gameObject.name);
+        builder.AppendLine("position: " + transform.position.ToString());
+        Debug.Log(builder.ToString());
+    //    Debug.Log("OnFound");
     }
 
     private void OnLost(GameObject i_lostObject)
     {
-        Debug.Log("OnLost");
+        System.Text.StringBuilder builder = new System.Text.StringBuilder();
+        builder.AppendLine("OnLost");
+        builder.AppendLine("name: " + gameObject.name);
+        builder.AppendLine("position: " + transform.position.ToString());
+        Debug.Log(builder.ToString());
+     //   Debug.Log("OnLost");
     }
 }
