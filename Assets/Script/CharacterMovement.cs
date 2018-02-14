@@ -73,9 +73,21 @@ public class CharacterMovement : MonoBehaviour {
         {
             int m = Random.Range(0, movepointList.Count);
             nav.SetDestination(movepointList[m].transform.position);
+
+            System.Text.StringBuilder builder = new System.Text.StringBuilder();
+            builder.AppendLine("NavMeshAgent.SetDestination Status.");
+            builder.AppendLine("status if in: " + nav.pathStatus);
+            builder.AppendLine("position: " + transform.position.ToString());
+            Debug.Log(builder.ToString());
         }
 
-        if(nav.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathComplete)
+        System.Text.StringBuilder builder1 = new System.Text.StringBuilder();
+        builder1.AppendLine("NavMeshAgent.SetDestination Status.");
+        builder1.AppendLine("status if out: " + nav.pathStatus);
+        builder1.AppendLine("position: " + transform.position.ToString());
+        Debug.Log(builder1.ToString());
+
+        if (nav.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathComplete)
         {
             backflg = true;
  
