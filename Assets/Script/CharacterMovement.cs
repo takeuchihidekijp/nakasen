@@ -95,7 +95,7 @@ public class CharacterMovement : MonoBehaviour {
 
         if (backflg == true)
         {
-            int r = Random.Range(0, movepointList.Count);
+            int r = Random.Range(0, returnpointList.Count);
             nav.SetDestination(returnpointList[r].transform.position);
         }
 
