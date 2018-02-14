@@ -53,6 +53,7 @@ public class CharacterMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+
         //  CharacterMoveMent();
         m_timer += Time.deltaTime;
 
@@ -73,24 +74,15 @@ public class CharacterMovement : MonoBehaviour {
         {
             int m = Random.Range(0, movepointList.Count);
             nav.SetDestination(movepointList[m].transform.position);
-
-            System.Text.StringBuilder builder = new System.Text.StringBuilder();
-            builder.AppendLine("NavMeshAgent.SetDestination Status.");
-            builder.AppendLine("status if in: " + nav.pathStatus);
-            builder.AppendLine("position: " + transform.position.ToString());
-            Debug.Log(builder.ToString());
         }
 
-        System.Text.StringBuilder builder1 = new System.Text.StringBuilder();
-        builder1.AppendLine("NavMeshAgent.SetDestination Status.");
-        builder1.AppendLine("status if out: " + nav.pathStatus);
-        builder1.AppendLine("position: " + transform.position.ToString());
-        Debug.Log(builder1.ToString());
-
-        if (nav.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathComplete)
+        //if (nav.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathComplete)
+        //if (!nav.pathPending && !nav.hasPath)
+        //if (nav.hasPath && nav.remainingDistance < 0.5f)
+        if (nav.hasPath && nav.remainingDistance < 0.5f)
         {
             backflg = true;
- 
+
         }
 
         if (backflg == true)
