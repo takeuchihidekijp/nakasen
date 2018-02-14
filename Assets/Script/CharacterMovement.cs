@@ -13,11 +13,16 @@ public class CharacterMovement : MonoBehaviour {
     private int MovePointCount = 5;
     private List<GameObject> movepointList = new List<GameObject>();
 
+    private int ReturnPointCount = 5;
+    private List<GameObject> returnpointList = new List<GameObject>();
+
     [SerializeField] float m_interval = 1.5f;
     float m_timer;
 
-	// Use this for initialization
-	void Start () {
+    bool backflg = false;
+
+    // Use this for initialization
+    void Start () {
 
         for (int i = 1; i <= MovePointCount; ++i)
         {
@@ -26,6 +31,16 @@ public class CharacterMovement : MonoBehaviour {
             if(movepoint != null)
             {
                 movepointList.Add(movepoint);
+            }
+        }
+
+        for (int i = 1; i <= ReturnPointCount; ++i)
+        {
+            GameObject returnpoint = GameObject.Find("ReturnPoint" + i.ToString());
+
+            if (returnpoint != null)
+            {
+                returnpointList.Add(returnpoint);
             }
         }
 
@@ -41,19 +56,38 @@ public class CharacterMovement : MonoBehaviour {
         //  CharacterMoveMent();
         m_timer += Time.deltaTime;
 
-        if( m_timer > m_interval )
+
+        if ( m_timer > m_interval )
         {
             m_timer = 0f;
-            SetRandomDestination();
+            CharacterMoveMent();
+           // SetRandomDestination();
         }
 		
 	}
 
     private void CharacterMoveMent()
     {
-        int r = Random.Range(0, movepointList.Count);
 
-        nav.SetDestination(movepointList[r].transform.position);
+        if (backflg == false)
+        {
+            int m = Random.Range(0, movepointList.Count);
+            nav.SetDestination(movepointList[m].transform.position);
+        }
+
+        if(nav.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathComplete)
+        {
+            backflg = true;
+ 
+        }
+
+        if (backflg == true)
+        {
+            int r = Random.Range(0, movepointList.Count);
+            nav.SetDestination(returnpointList[r].transform.position);
+        }
+
+
     }
 
     void SetRandomDestination()
