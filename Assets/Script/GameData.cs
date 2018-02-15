@@ -10,6 +10,9 @@ public class GameData {
 
     //Characterの数の上限
     public static int NUMBER_OF_CHARACTERS = 15;
+
+    //生成された順番
+    public static int NUMBER_OF_GENERATE = 0;
 		
 	
 }

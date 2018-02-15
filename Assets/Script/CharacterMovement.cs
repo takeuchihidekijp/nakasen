@@ -63,19 +63,36 @@ public class CharacterMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        switch (movestate)
+        {
+
+            case MoveState.Stay:
+                Stay();
+                break;
+            case MoveState.Forward:
+                Forward();
+                break;
+            case MoveState.Back:
+                Back();
+                break;
+            case MoveState.End:
+                End();
+                break;
+        }
+
 
         //  CharacterMoveMent();
-        m_timer += Time.deltaTime;
+        //    m_timer += Time.deltaTime;
 
 
-        if ( m_timer > m_interval )
-        {
-            m_timer = 0f;
-            CharacterMoveMent();
-           // SetRandomDestination();
-        }
-		
-	}
+        //    if ( m_timer > m_interval )
+        //   {
+        //   m_timer = 0f;
+        //    CharacterMoveMent();
+        // SetRandomDestination();
+        //}
+
+    }
 
     private void CharacterMoveMent()
     {
@@ -111,25 +128,51 @@ public class CharacterMovement : MonoBehaviour {
 
     void Stay()
     {
-        // 行き先を決める
-        movestate = MoveState.Forward;
+        m_timer += Time.deltaTime;
+
+        if (m_timer > m_interval)
+        {
+            m_timer = 0f;
+            // 行き先を決める
+            int m = Random.Range(0, movepointList.Count);
+            nav.SetDestination(movepointList[m].transform.position);
+
+            movestate = MoveState.Forward;
+        }
 
     }
 
     void Forward()
     {
         // 目的地についたら戻り先を決める
-        movestate = MoveState.Back;
+
+        if (nav.hasPath && nav.remainingDistance < 0.5f)
+        {
+
+            int r = Random.Range(0, returnpointList.Count);
+            nav.SetDestination(returnpointList[r].transform.position);
+
+            movestate = MoveState.Back;
+
+        }
+
+
     }
 
     void Back()
     {
+        if (nav.hasPath && nav.remainingDistance < 0.5f)
+        {
 
+            movestate = MoveState.End;
+
+        }
     }
 
     void End()
     {
-
+        //ゴール地点に到達したら自分を消す
+        Destroy(this.gameObject);
         
     }
 }
