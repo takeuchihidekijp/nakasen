@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GenerateManager : MonoBehaviour {
 
-    public List<GameObject> generateList = new List<GameObject>();
+    public List<int> generateList = new List<int>();
 
-    public int MyNumber;
+    public static int MyNumber;
 
     // Use this for initialization
     void Start () {
@@ -15,7 +15,7 @@ public class GenerateManager : MonoBehaviour {
 
         MyNumber = GameData.NUMBER_OF_GENERATE;
 
-     //   generateList.Add(MyNumber);
+        generateList.Add(MyNumber);
 		
 	}
 	
