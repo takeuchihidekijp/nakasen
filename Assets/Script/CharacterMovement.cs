@@ -21,6 +21,16 @@ public class CharacterMovement : MonoBehaviour {
 
     bool backflg = false;
 
+    enum MoveState
+    {
+        Stay,
+        Forward,
+        Back,
+        End,
+    }
+
+    MoveState movestate;
+
     // Use this for initialization
     void Start () {
 
@@ -97,5 +107,29 @@ public class CharacterMovement : MonoBehaviour {
     void SetRandomDestination()
     {
         nav.SetDestination(new Vector3(Random.Range(-5.0f, 5.0f), 0, Random.Range(-10.0f, 10.0f)));
+    }
+
+    void Stay()
+    {
+        // 行き先を決める
+        movestate = MoveState.Forward;
+
+    }
+
+    void Forward()
+    {
+        // 目的地についたら戻り先を決める
+        movestate = MoveState.Back;
+    }
+
+    void Back()
+    {
+
+    }
+
+    void End()
+    {
+
+        
     }
 }
