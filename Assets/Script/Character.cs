@@ -29,6 +29,15 @@ public class Character : MonoBehaviour {
         if (dist < 10f)
         {
             // 追いかけるなど
+            RaycastHit hit;
+            
+            if(Physics.Raycast(this.transform.position,this.transform.forward,out hit,50f) == true)
+            {
+                if(hit.collider.gameObject.tag == "Enemy")
+                {
+                    //追いかけるなど
+                }
+            }
         }
     }
 

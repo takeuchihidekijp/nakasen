@@ -26,6 +26,8 @@ public class CharacterMovement : MonoBehaviour {
         Stay,
         Forward,
         Back,
+        Chase,
+        Escape,
         End,
     }
 
@@ -71,6 +73,12 @@ public class CharacterMovement : MonoBehaviour {
                 break;
             case MoveState.Forward:
                 Forward();
+                break;
+            case MoveState.Chase:
+                Chase();
+                break;
+            case MoveState.Escape:
+                Escape();
                 break;
             case MoveState.Back:
                 Back();
@@ -156,6 +164,18 @@ public class CharacterMovement : MonoBehaviour {
 
         }
 
+
+    }
+
+    //追いかけるロジック
+    void Chase()
+    {
+
+    }
+
+    //逃げるロジック
+    void Escape()
+    {
 
     }
 

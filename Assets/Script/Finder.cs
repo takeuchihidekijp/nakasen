@@ -26,6 +26,7 @@ public class Finder : MonoBehaviour {
         builder.AppendLine("name: " + transform.root.gameObject.name);
         builder.AppendLine("position: " + transform.position.ToString());
         builder.AppendLine("other_number: " + GenerateManager.MyNumber);
+        builder.AppendLine("target: " + i_foundObject);
         Debug.Log(builder.ToString());
     //    Debug.Log("OnFound");
     }
@@ -37,6 +38,7 @@ public class Finder : MonoBehaviour {
         builder.AppendLine("myname: " + this.transform.root.gameObject.name);
         builder.AppendLine("name: " + transform.root.gameObject.name);
         builder.AppendLine("position: " + transform.position.ToString());
+        builder.AppendLine("target: " + i_lostObject);
         Debug.Log(builder.ToString());
      //   Debug.Log("OnLost");
     }
