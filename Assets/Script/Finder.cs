@@ -5,41 +5,43 @@ using UnityEngine;
 
 public class Finder : MonoBehaviour {
 
-    private List<GameObject> m_target = new List<GameObject>();
-
-    private void Awake()
+    // トリガーに入ってきた瞬間
+    private void OnTriggerEnter(Collider other)
     {
-
-        var searching = GetComponentInChildren<SearchingBehavior>();
-        searching.onFound += OnFound;
-        searching.onLost += OnLost;
+        CheckSight(other);
     }
 
-    private void OnFound (GameObject i_foundObject)
+    // トリガーにとどまった間呼ばれ続ける
+    private void OnTriggerStay(Collider other)
     {
-
-        Debug.Log(GenerateManager.MyNumber);
-
-        System.Text.StringBuilder builder = new System.Text.StringBuilder();
-        builder.AppendLine("OnFound");
-        builder.AppendLine("myname: " + this.transform.root.gameObject.name);
-        builder.AppendLine("name: " + transform.root.gameObject.name);
-        builder.AppendLine("position: " + transform.position.ToString());
-        builder.AppendLine("other_number: " + GenerateManager.MyNumber);
-        builder.AppendLine("target: " + i_foundObject);
-        Debug.Log(builder.ToString());
-    //    Debug.Log("OnFound");
+        CheckSight(other);
     }
 
-    private void OnLost(GameObject i_lostObject)
+    private void CheckSight(Collider other)
     {
-        System.Text.StringBuilder builder = new System.Text.StringBuilder();
-        builder.AppendLine("OnLost");
-        builder.AppendLine("myname: " + this.transform.root.gameObject.name);
-        builder.AppendLine("name: " + transform.root.gameObject.name);
-        builder.AppendLine("position: " + transform.position.ToString());
-        builder.AppendLine("target: " + i_lostObject);
-        Debug.Log(builder.ToString());
-     //   Debug.Log("OnLost");
+        if (other.gameObject.tag == "Character" && this.transform.parent.gameObject.layer != other.gameObject.layer)
+        {
+
+            // 自分の向いてる方向
+            Vector3 dir = this.transform.rotation * Vector3.forward;
+            Debug.DrawLine(this.transform.position, this.transform.position + dir, Color.blue, 0.1f, false);
+
+            // 敵の方向
+            Vector3 enemyDir = other.transform.position - this.transform.position;
+
+            // 敵方向ベクトルの正規化
+            enemyDir.Normalize();
+            Debug.DrawLine(this.transform.position, this.transform.position + enemyDir, Color.red, 0.1f, false);
+
+            // 視界の方向に相手がいるか
+            // 前方４５度（cos45 の値より大きい）なら視野の中にいる
+            if (Vector3.Dot(dir, enemyDir) > 0.5253f)
+            {
+
+                // 見つけた処理
+                Debug.Log("Found");
+
+            }
+        }
     }
 }

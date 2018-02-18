@@ -6,8 +6,11 @@ public class Character : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+   
+     var gm = this.GetComponent<GenerateManager>();
+        var test = gm.MyNumber;
+        
+    }
 	
 	// Update is called once per frame
 	void Update () {

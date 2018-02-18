@@ -6,7 +6,7 @@ public class GenerateManager : MonoBehaviour {
 
     public List<int> generateList = new List<int>();
 
-    public static int MyNumber;
+    public int MyNumber;
 
     // Use this for initialization
     void Start () {
