@@ -1,10 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//仮
-using UnityEngine.AI;
-//仮
-[RequireComponent(typeof(NavMeshAgent))]
+
 public class Finder : MonoBehaviour {
     //仮
     //追いかけるフラグ
@@ -12,15 +9,12 @@ public class Finder : MonoBehaviour {
     //逃げるフラグ
     public bool escapeflg = false;
     //仮
-    [SerializeField]
-    private Transform m_target = null;
-
-    private NavMeshAgent m_navAgent = null;
+    UnityEngine.AI.NavMeshAgent nav;
     //仮
     //仮
     private void Start()
     {
-        m_navAgent = GetComponent<NavMeshAgent>();
+        nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
     }
 
     // トリガーに入ってきた瞬間
@@ -69,7 +63,7 @@ public class Finder : MonoBehaviour {
                     chargeflg = true;
                     escapeflg = false;
                     //仮
-                    m_navAgent.destination = other.gameObject.transform.position;
+                    nav.SetDestination(other.gameObject.transform.position);
                     
 
                 }

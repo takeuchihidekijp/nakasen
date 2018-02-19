@@ -190,10 +190,7 @@ public class CharacterMovement : MonoBehaviour {
 
     void Forward()
     {
-        //  if(GetComponent<Finder>().chargeflg == true)
-        //  {
-        // movestate = MoveState.Chase;
-        //}
+
 
         // 目的地についたら戻り先を決める
 
