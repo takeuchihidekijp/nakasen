@@ -16,6 +16,12 @@ public class CharacterMovement : MonoBehaviour {
     private int ReturnPointCount = 5;
     private List<GameObject> returnpointList = new List<GameObject>();
 
+    //味方の捕虜リスト
+    private List<GameObject> charapows = new List<GameObject>();
+
+    public GameObject EnemyPowPrefab;
+
+
     [SerializeField] float m_interval = 1.5f;
     float m_timer;
 
@@ -102,6 +108,38 @@ public class CharacterMovement : MonoBehaviour {
 
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Line")
+        {
+            backflg = true;
+        }
+
+        if (collision.gameObject.tag == "Character" && this.transform.gameObject.layer != collision.gameObject.layer)
+        {
+            Debug.Log("Found: ぶつかった");
+
+            if (this.transform.GetComponent<GenerateManager>().MyNumber > collision.gameObject.GetComponent<GenerateManager>().MyNumber)
+            {
+                //味方の方が強かったら捕虜追加
+                AddPow();
+
+                Debug.Log("Found: Charge");
+
+                Destroy(collision.gameObject);
+            }
+        }
+    }
+
+    public void AddPow()
+    {
+        var ins = Instantiate(EnemyPowPrefab);
+
+        charapows.Add(ins);
+
+        Debug.Log("AddPow");
+    }
+
     private void CharacterMoveMent()
     {
 
@@ -152,9 +190,14 @@ public class CharacterMovement : MonoBehaviour {
 
     void Forward()
     {
+        //  if(GetComponent<Finder>().chargeflg == true)
+        //  {
+        // movestate = MoveState.Chase;
+        //}
+
         // 目的地についたら戻り先を決める
 
-        if (nav.hasPath && nav.remainingDistance < 0.5f)
+        if ((nav.hasPath && nav.remainingDistance < 0.5f)  || (backflg == true))
         {
 
             int r = Random.Range(0, returnpointList.Count);
@@ -170,7 +213,7 @@ public class CharacterMovement : MonoBehaviour {
     //追いかけるロジック
     void Chase()
     {
-
+        // ||(this.transform.position.z >= 5)
     }
 
     //逃げるロジック

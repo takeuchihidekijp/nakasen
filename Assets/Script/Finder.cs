@@ -1,11 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-
+//仮
+using UnityEngine.AI;
+//仮
+[RequireComponent(typeof(NavMeshAgent))]
 public class Finder : MonoBehaviour {
+    //仮
+    //追いかけるフラグ
+    public bool chargeflg = false;
+    //逃げるフラグ
+    public bool escapeflg = false;
+    //仮
+    [SerializeField]
+    private Transform m_target = null;
 
-    
+    private NavMeshAgent m_navAgent = null;
+    //仮
+    //仮
+    private void Start()
+    {
+        m_navAgent = GetComponent<NavMeshAgent>();
+    }
 
     // トリガーに入ってきた瞬間
     private void OnTriggerEnter(Collider other)
@@ -42,15 +58,26 @@ public class Finder : MonoBehaviour {
 
                 // 見つけた処理
                 Debug.Log("Found");
+                Debug.Log(this.transform.parent.GetComponent<GenerateManager>().MyNumber);
 
-              //  var gm = this.GetComponent<GenerateManager>();
-                if(this.GetComponent<GenerateManager>().MyNumber > other.GetComponent<GenerateManager>().MyNumber)
+                Debug.Log(other.gameObject.GetComponent<GenerateManager>().MyNumber);
+
+
+                if (this.transform.parent.GetComponent<GenerateManager>().MyNumber > other.gameObject.GetComponent<GenerateManager>().MyNumber)
                 {
-                    Debug.Log("Found1");
+                    Debug.Log("Found: Charge");
+                    chargeflg = true;
+                    escapeflg = false;
+                    //仮
+                    m_navAgent.destination = other.gameObject.transform.position;
+                    
+
                 }
                 else
                 {
-                    Debug.Log("Found2");
+                    Debug.Log("Found: Escape");
+                    chargeflg = false;
+                    escapeflg = true;
                 }
 
              //  if(this)

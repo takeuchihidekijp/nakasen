@@ -9,7 +9,8 @@ public class EnemySet : MonoBehaviour {
     /// <summary>敵のカウンター。敵のオブジェクト名を unique にするために使う</summary>
     int enemyCounter;
 
-    [SerializeField] float m_interval = 30.0f;
+    //30
+    [SerializeField] float m_interval = 10.0f;
     float m_timer;
 
     // Use this for initialization
