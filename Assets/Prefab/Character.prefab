@@ -556,7 +556,6 @@ GameObject:
   - component: {fileID: 4895377197837328}
   - component: {fileID: 135325086124762060}
   - component: {fileID: 114533383978115696}
-  - component: {fileID: 114615493417566304}
   m_Layer: 2
   m_Name: SerchCollider
   m_TagString: Untagged
@@ -2352,18 +2351,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e65493fa50bf3b4ea28624a6e7464c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114615493417566304
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1508809756870698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dd376c1bfdca5a448df53590b0fe2d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_searchAngle: 240
 --- !u!114 &114794973600554622
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2388,6 +2375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generateList: 
+  MyNumber: 0
 --- !u!135 &135325086124762060
 SphereCollider:
   m_ObjectHideFlags: 1

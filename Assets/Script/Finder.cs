@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Finder : MonoBehaviour {
 
+    
+
     // トリガーに入ってきた瞬間
     private void OnTriggerEnter(Collider other)
     {
@@ -40,6 +42,18 @@ public class Finder : MonoBehaviour {
 
                 // 見つけた処理
                 Debug.Log("Found");
+
+              //  var gm = this.GetComponent<GenerateManager>();
+                if(this.GetComponent<GenerateManager>().MyNumber > other.GetComponent<GenerateManager>().MyNumber)
+                {
+                    Debug.Log("Found1");
+                }
+                else
+                {
+                    Debug.Log("Found2");
+                }
+
+             //  if(this)
 
             }
         }
