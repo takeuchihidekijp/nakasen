@@ -194,7 +194,6 @@ public class CharacterMovement : MonoBehaviour {
         {
             Debug.Log("CharacterMovement: Charge");
 
-            //  nav.SetDestination(transform.GetComponentInChildren<Finder>().);
             nav.SetDestination(transform.GetComponentInChildren<Finder>().gameObject.transform.position);
 
         }

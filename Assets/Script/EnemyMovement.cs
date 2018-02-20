@@ -162,7 +162,6 @@ public class EnemyMovement : MonoBehaviour {
         {
             Debug.Log("EnemyMovement: Charge");
 
-            //  nav.SetDestination(transform.GetComponentInChildren<Finder>().);
             nav.SetDestination(transform.GetComponentInChildren<Finder>().gameObject.transform.position);
 
         }
