@@ -8,28 +8,21 @@ public class Finder : MonoBehaviour {
     public bool chargeflg = false;
     //逃げるフラグ
     public bool escapeflg = false;
-    //仮
-    UnityEngine.AI.NavMeshAgent nav;
-    //仮
-    //仮
-    private void Start()
-    {
-        nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
-    }
+
 
     // トリガーに入ってきた瞬間
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         CheckSight(other);
     }
 
     // トリガーにとどまった間呼ばれ続ける
-    private void OnTriggerStay(Collider other)
+    public void OnTriggerStay(Collider other)
     {
         CheckSight(other);
     }
 
-    private void CheckSight(Collider other)
+    public void CheckSight(Collider other)
     {
         if (other.gameObject.tag == "Character" && this.transform.parent.gameObject.layer != other.gameObject.layer)
         {
@@ -62,8 +55,6 @@ public class Finder : MonoBehaviour {
                     Debug.Log("Found: Charge");
                     chargeflg = true;
                     escapeflg = false;
-                    //仮
-                    nav.SetDestination(other.gameObject.transform.position);
                     
 
                 }

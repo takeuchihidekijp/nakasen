@@ -19,6 +19,13 @@ public class EnemyMovement : MonoBehaviour {
     private int EnemyReturnPointCount = 5;
     private List<GameObject> enemy_returnpointList = new List<GameObject>();
 
+    //敵の捕虜リスト
+    private List<GameObject> enemypows = new List<GameObject>();
+
+    public GameObject CharacterPowPrefab;
+
+    bool backflg = false;
+
     enum MoveState
     {
         Stay,
@@ -86,6 +93,38 @@ public class EnemyMovement : MonoBehaviour {
 
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Line")
+        {
+            backflg = true;
+        }
+
+        if (collision.gameObject.tag == "Character" && this.transform.gameObject.layer != collision.gameObject.layer)
+        {
+            Debug.Log("Found: ぶつかった");
+
+            if (this.transform.GetComponent<GenerateManager>().MyNumber > collision.gameObject.GetComponent<GenerateManager>().MyNumber)
+            {
+                //味方の方が強かったら捕虜追加
+                AddPow();
+
+                Debug.Log("Found: Charge");
+
+                Destroy(collision.gameObject);
+            }
+        }
+    }
+
+    public void AddPow()
+    {
+        var ins = Instantiate(CharacterPowPrefab);
+
+        enemypows.Add(ins);
+
+        Debug.Log("AddPow_Enemy");
+    }
+
     void SetRandomDestination()
     {
         //   nav.SetDestination(new Vector3(Random.Range(-5.0f, 5.0f), 0, Random.Range(0.0f, 10.0f)));
@@ -118,9 +157,18 @@ public class EnemyMovement : MonoBehaviour {
 
     void Forward()
     {
+
+        if (transform.GetComponentInChildren<Finder>().chargeflg == true)
+        {
+            Debug.Log("EnemyMovement: Charge");
+
+            //  nav.SetDestination(transform.GetComponentInChildren<Finder>().);
+            nav.SetDestination(transform.GetComponentInChildren<Finder>().gameObject.transform.position);
+
+        }
         // 目的地についたら戻り先を決める
 
-        if (nav.hasPath && nav.remainingDistance < 0.5f)
+        if ((nav.hasPath && nav.remainingDistance < 0.5f) || (backflg == true))
         {
 
             int r = Random.Range(0, enemy_returnpointList.Count);

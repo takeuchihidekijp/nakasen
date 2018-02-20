@@ -190,7 +190,14 @@ public class CharacterMovement : MonoBehaviour {
 
     void Forward()
     {
+        if(transform.GetComponentInChildren<Finder>().chargeflg == true)
+        {
+            Debug.Log("CharacterMovement: Charge");
 
+            //  nav.SetDestination(transform.GetComponentInChildren<Finder>().);
+            nav.SetDestination(transform.GetComponentInChildren<Finder>().gameObject.transform.position);
+
+        }
 
         // 目的地についたら戻り先を決める
 

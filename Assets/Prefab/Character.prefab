@@ -2351,6 +2351,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e65493fa50bf3b4ea28624a6e7464c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chargeflg: 0
+  escapeflg: 0
 --- !u!114 &114794973600554622
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2362,6 +2364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b22399dc484d394db78cc71fef219a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyPowPrefab: {fileID: 0}
   m_interval: 1.5
 --- !u!114 &114815814417651164
 MonoBehaviour:

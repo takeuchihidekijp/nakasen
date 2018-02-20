@@ -2365,6 +2365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_interval: 1.5
+  CharacterPowPrefab: {fileID: 0}
 --- !u!114 &114413903327745302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2376,6 +2377,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e65493fa50bf3b4ea28624a6e7464c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chargeflg: 0
+  escapeflg: 0
 --- !u!135 &135325086124762060
 SphereCollider:
   m_ObjectHideFlags: 1

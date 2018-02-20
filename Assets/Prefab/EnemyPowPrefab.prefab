@@ -127,14 +127,10 @@ GameObject:
   - component: {fileID: 95026038317672234}
   - component: {fileID: 65137197823953916}
   - component: {fileID: 54555705780014592}
-  - component: {fileID: 195631957364555036}
-  - component: {fileID: 114701514921349312}
-  - component: {fileID: 114051521275036644}
   - component: {fileID: 135248934314835290}
-  - component: {fileID: 114991194286874714}
   m_Layer: 10
-  m_Name: EnemysPow
-  m_TagString: Character
+  m_Name: EnemyPowPrefab
+  m_TagString: Pow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2329,29 +2325,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114051521275036644
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1089126869612850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9329eef7c518dd42a41f1de62e64d19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_interval: 1.5
---- !u!114 &114701514921349312
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1089126869612850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44bf9e1ff3489224686c4cc56520035a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114916129454109450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2363,19 +2336,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e65493fa50bf3b4ea28624a6e7464c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114991194286874714
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1089126869612850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94501e78bac309d4eb2796c2beadf21b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  generateList: 
-  MyNumber: 0
+  chargeflg: 0
+  escapeflg: 0
 --- !u!135 &135004435609917700
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -2711,24 +2673,3 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.00011027418, y: 0.00723745, z: -0.014167192}
     m_Extent: {x: 0.02410244, y: 0.02246958, z: 0.01908004}
   m_DirtyAABB: 0
---- !u!195 &195631957364555036
-NavMeshAgent:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1089126869612850}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
