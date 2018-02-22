@@ -190,11 +190,12 @@ public class CharacterMovement : MonoBehaviour {
 
     void Forward()
     {
-        if(transform.GetComponentInChildren<Finder>().chargeflg == true)
-        {
+      //  if(transform.GetComponentInChildren<Finder>().chargeflg == true)
+      if (transform.GetComponentInChildren<Finder>().chargeflg == true && transform.GetComponentInChildren<Finder>().target != null)
+       {
             Debug.Log("CharacterMovement: Charge");
 
-            nav.SetDestination(transform.GetComponentInChildren<Finder>().gameObject.transform.position);
+            nav.SetDestination(transform.GetComponentInChildren<Finder>().target.transform.position);
 
         }
 

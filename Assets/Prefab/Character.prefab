@@ -2353,6 +2353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chargeflg: 0
   escapeflg: 0
+  target: {fileID: 0}
 --- !u!114 &114794973600554622
 MonoBehaviour:
   m_ObjectHideFlags: 1

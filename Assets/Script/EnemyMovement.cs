@@ -158,11 +158,11 @@ public class EnemyMovement : MonoBehaviour {
     void Forward()
     {
 
-        if (transform.GetComponentInChildren<Finder>().chargeflg == true)
+        if (transform.GetComponentInChildren<Finder>().chargeflg == true && transform.GetComponentInChildren<Finder>().target != null)
         {
-            Debug.Log("EnemyMovement: Charge");
+            Debug.Log("CharacterMovement: Charge");
 
-            nav.SetDestination(transform.GetComponentInChildren<Finder>().gameObject.transform.position);
+            nav.SetDestination(transform.GetComponentInChildren<Finder>().target.transform.position);
 
         }
         // 目的地についたら戻り先を決める

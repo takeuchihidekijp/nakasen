@@ -9,6 +9,8 @@ public class Finder : MonoBehaviour {
     //逃げるフラグ
     public bool escapeflg = false;
 
+    //見つけた相手の GameObject を保持する変数
+    public GameObject target;
 
     // トリガーに入ってきた瞬間
     public void OnTriggerEnter(Collider other)
@@ -20,6 +22,12 @@ public class Finder : MonoBehaviour {
     public void OnTriggerStay(Collider other)
     {
         CheckSight(other);
+    }
+
+    public Vector3 CheckSight1(Collider other1)
+    {
+
+        return other1.transform.position;
     }
 
     public void CheckSight(Collider other)
@@ -55,7 +63,9 @@ public class Finder : MonoBehaviour {
                     Debug.Log("Found: Charge");
                     chargeflg = true;
                     escapeflg = false;
-                    
+
+                    // 追いかける相手を変数に渡す
+                    target = other.gameObject;
 
                 }
                 else
