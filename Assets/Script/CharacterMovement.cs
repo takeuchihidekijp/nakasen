@@ -16,11 +16,6 @@ public class CharacterMovement : MonoBehaviour {
     private int ReturnPointCount = 5;
     private List<GameObject> returnpointList = new List<GameObject>();
 
-    //味方の捕虜リスト
-    private List<GameObject> charapows = new List<GameObject>();
-
-    public GameObject EnemyPowPrefab;
-
 
     [SerializeField] float m_interval = 1.5f;
     float m_timer;
@@ -131,14 +126,6 @@ public class CharacterMovement : MonoBehaviour {
     //    }
     }
 
-    public void AddPow()
-    {
-        var ins = Instantiate(EnemyPowPrefab);
-
-        charapows.Add(ins);
-
-        Debug.Log("AddPow");
-    }
 
     private void CharacterMoveMent()
     {
@@ -199,10 +186,10 @@ public class CharacterMovement : MonoBehaviour {
 
             nav.SetDestination(transform.GetComponentInChildren<Finder>().target.transform.position);
 
-            //つかまえたら捕虜にする
+            //つかまえたら捕虜にする(Finderでやるので廃止）
             if (transform.GetComponentInChildren<Finder>().chachedflg == true)
             {
-             //   AddPow();
+              //  AddPow();
             }
 
         }

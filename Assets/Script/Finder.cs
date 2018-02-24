@@ -92,18 +92,23 @@ public class Finder : MonoBehaviour {
                         Debug.Log(dist);
                         chachedflg = true;
 
-                        if(this.transform.parent.gameObject.layer.Equals("Character"))
+                        Destroy(other.gameObject);
+
+                        if (this.transform.parent.gameObject.name == "Character(Clone)")
                         {
                             AddPow_Character();
                             Destroy(other.gameObject);
                             Debug.Log("CharacterPow!");
+                            Debug.Log(this.transform.parent.gameObject.name);
                         }
                         else
                         {
                             AddPow_Enemy();
                             Destroy(other.gameObject);
                             Debug.Log("EnemyPow!");
+                            Debug.Log(this.transform.parent.gameObject.name);
                         }
+
                     }
 
 

@@ -19,11 +19,6 @@ public class EnemyMovement : MonoBehaviour {
     private int EnemyReturnPointCount = 5;
     private List<GameObject> enemy_returnpointList = new List<GameObject>();
 
-    //敵の捕虜リスト
-    private List<GameObject> enemypows = new List<GameObject>();
-
-    public GameObject CharacterPowPrefab;
-
     bool backflg = false;
 
     enum MoveState
@@ -100,30 +95,23 @@ public class EnemyMovement : MonoBehaviour {
             backflg = true;
         }
 
-        if (collision.gameObject.tag == "Character" && this.transform.gameObject.layer != collision.gameObject.layer)
-        {
-            Debug.Log("Found: ぶつかった");
+        //ぶつからないので廃止。
+        //   if (collision.gameObject.tag == "Character" && this.transform.gameObject.layer != collision.gameObject.layer)
+        //  {
+        // Debug.Log("Found: ぶつかった");
 
-            if (this.transform.GetComponent<GenerateManager>().MyNumber > collision.gameObject.GetComponent<GenerateManager>().MyNumber)
-            {
-                //味方の方が強かったら捕虜追加
-                AddPow();
+        // if (this.transform.GetComponent<GenerateManager>().MyNumber > collision.gameObject.GetComponent<GenerateManager>().MyNumber)
+        // {
+        //味方の方が強かったら捕虜追加
+        // AddPow();
 
-                Debug.Log("Found: Charge");
+        // Debug.Log("Found: Charge");
 
-                Destroy(collision.gameObject);
-            }
-        }
+        // Destroy(collision.gameObject);
+        // }
+        //}
     }
 
-    public void AddPow()
-    {
-        var ins = Instantiate(CharacterPowPrefab);
-
-        enemypows.Add(ins);
-
-        Debug.Log("AddPow_Enemy");
-    }
 
     void SetRandomDestination()
     {
@@ -163,6 +151,12 @@ public class EnemyMovement : MonoBehaviour {
             Debug.Log("CharacterMovement: Charge");
 
             nav.SetDestination(transform.GetComponentInChildren<Finder>().target.transform.position);
+
+            ////つかまえたら捕虜にする(Finderでやるので廃止）
+            if (transform.GetComponentInChildren<Finder>().chachedflg == true)
+            {
+              //  AddPow();
+            }
 
         }
         // 目的地についたら戻り先を決める

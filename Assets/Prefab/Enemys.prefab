@@ -2365,7 +2365,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_interval: 1.5
-  CharacterPowPrefab: {fileID: 0}
 --- !u!114 &114413903327745302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2381,9 +2380,9 @@ MonoBehaviour:
   escapeflg: 0
   chachedflg: 0
   target: {fileID: 0}
-  EnemyPowPrefab: {fileID: 1089126869612850, guid: 4c266a516524fc4489c0f00f41824c3a,
+  EnemyPowPrefab: {fileID: 1100607420583988, guid: 0ebea46cffa54354ba92a14ca2afe0be,
     type: 2}
-  CharacterPowPrefab: {fileID: 1100607420583988, guid: 0ebea46cffa54354ba92a14ca2afe0be,
+  CharacterPowPrefab: {fileID: 1089126869612850, guid: 4c266a516524fc4489c0f00f41824c3a,
     type: 2}
 --- !u!135 &135325086124762060
 SphereCollider:
