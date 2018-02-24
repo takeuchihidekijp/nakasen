@@ -2353,6 +2353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chargeflg: 0
   escapeflg: 0
+  chachedflg: 0
   target: {fileID: 0}
 --- !u!114 &114794973600554622
 MonoBehaviour:
@@ -2365,7 +2366,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b22399dc484d394db78cc71fef219a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPowPrefab: {fileID: 0}
+  EnemyPowPrefab: {fileID: 1089126869612850, guid: 4c266a516524fc4489c0f00f41824c3a,
+    type: 2}
   m_interval: 1.5
 --- !u!114 &114815814417651164
 MonoBehaviour:

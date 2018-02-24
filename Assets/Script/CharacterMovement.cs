@@ -115,20 +115,20 @@ public class CharacterMovement : MonoBehaviour {
             backflg = true;
         }
 
-        if (collision.gameObject.tag == "Character" && this.transform.gameObject.layer != collision.gameObject.layer)
-        {
-            Debug.Log("Found: ぶつかった");
+   //     if (collision.gameObject.tag == "Character" && this.transform.gameObject.layer != collision.gameObject.layer)
+   //     {
+   //         Debug.Log("Found: ぶつかった");
 
-            if (this.transform.GetComponent<GenerateManager>().MyNumber > collision.gameObject.GetComponent<GenerateManager>().MyNumber)
-            {
+   //         if (this.transform.GetComponent<GenerateManager>().MyNumber > collision.gameObject.GetComponent<GenerateManager>().MyNumber)
+   //         {
                 //味方の方が強かったら捕虜追加
-                AddPow();
+   //             AddPow();
 
-                Debug.Log("Found: Charge");
+    //            Debug.Log("Found: Charge");
 
-                Destroy(collision.gameObject);
-            }
-        }
+    //            Destroy(collision.gameObject);
+    //        }
+    //    }
     }
 
     public void AddPow()
@@ -190,12 +190,20 @@ public class CharacterMovement : MonoBehaviour {
 
     void Forward()
     {
+
+
       //  if(transform.GetComponentInChildren<Finder>().chargeflg == true)
       if (transform.GetComponentInChildren<Finder>().chargeflg == true && transform.GetComponentInChildren<Finder>().target != null)
        {
             Debug.Log("CharacterMovement: Charge");
 
             nav.SetDestination(transform.GetComponentInChildren<Finder>().target.transform.position);
+
+            //つかまえたら捕虜にする
+            if (transform.GetComponentInChildren<Finder>().chachedflg == true)
+            {
+                AddPow();
+            }
 
         }
 

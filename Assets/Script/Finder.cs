@@ -9,6 +9,9 @@ public class Finder : MonoBehaviour {
     //逃げるフラグ
     public bool escapeflg = false;
 
+    //つかまったフラグ
+    public bool chachedflg = false;
+
     //見つけた相手の GameObject を保持する変数
     public GameObject target;
 
@@ -60,12 +63,27 @@ public class Finder : MonoBehaviour {
 
                 if (this.transform.parent.GetComponent<GenerateManager>().MyNumber > other.gameObject.GetComponent<GenerateManager>().MyNumber)
                 {
+                    //追いかける
                     Debug.Log("Found: Charge");
                     chargeflg = true;
                     escapeflg = false;
 
                     // 追いかける相手を変数に渡す
                     target = other.gameObject;
+
+                    //相手との距離が近い場合は捕まえる
+                    float dist = Vector3.Distance(this.transform.parent.position,other.transform.position);
+                    Debug.Log("Dist");
+                    Debug.Log(dist);
+
+                    if(dist < 1.5f)
+                    {
+                        Debug.Log("Catched!");
+                        Debug.Log(dist);
+                        chachedflg = true;
+                    }
+
+
 
                 }
                 else
