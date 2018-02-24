@@ -270,7 +270,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1183588458264102
 GameObject:
   m_ObjectHideFlags: 1
@@ -2325,6 +2325,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chargeflg: 0
   escapeflg: 0
+  chachedflg: 0
+  target: {fileID: 0}
+  EnemyPowPrefab: {fileID: 1089126869612850, guid: 4c266a516524fc4489c0f00f41824c3a,
+    type: 2}
+  CharacterPowPrefab: {fileID: 1100607420583988}
 --- !u!135 &135013259991328110
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -2379,7 +2379,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chargeflg: 0
   escapeflg: 0
+  chachedflg: 0
   target: {fileID: 0}
+  EnemyPowPrefab: {fileID: 1089126869612850, guid: 4c266a516524fc4489c0f00f41824c3a,
+    type: 2}
+  CharacterPowPrefab: {fileID: 1100607420583988, guid: 0ebea46cffa54354ba92a14ca2afe0be,
+    type: 2}
 --- !u!135 &135325086124762060
 SphereCollider:
   m_ObjectHideFlags: 1

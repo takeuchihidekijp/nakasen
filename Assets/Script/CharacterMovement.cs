@@ -192,8 +192,8 @@ public class CharacterMovement : MonoBehaviour {
     {
 
 
-      //  if(transform.GetComponentInChildren<Finder>().chargeflg == true)
-      if (transform.GetComponentInChildren<Finder>().chargeflg == true && transform.GetComponentInChildren<Finder>().target != null)
+        //  if(transform.GetComponentInChildren<Finder>().chargeflg == true)
+        if (transform.GetComponentInChildren<Finder>().chargeflg == true && transform.GetComponentInChildren<Finder>().target != null)
        {
             Debug.Log("CharacterMovement: Charge");
 
@@ -202,7 +202,7 @@ public class CharacterMovement : MonoBehaviour {
             //つかまえたら捕虜にする
             if (transform.GetComponentInChildren<Finder>().chachedflg == true)
             {
-                AddPow();
+             //   AddPow();
             }
 
         }

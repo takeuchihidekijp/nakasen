@@ -964,7 +964,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1794873673016824
 GameObject:
   m_ObjectHideFlags: 1
@@ -2338,6 +2338,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chargeflg: 0
   escapeflg: 0
+  chachedflg: 0
+  target: {fileID: 0}
+  EnemyPowPrefab: {fileID: 0}
+  CharacterPowPrefab: {fileID: 0}
 --- !u!135 &135004435609917700
 SphereCollider:
   m_ObjectHideFlags: 1

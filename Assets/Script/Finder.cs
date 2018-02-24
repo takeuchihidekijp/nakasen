@@ -15,6 +15,16 @@ public class Finder : MonoBehaviour {
     //見つけた相手の GameObject を保持する変数
     public GameObject target;
 
+
+    //味方の捕虜リスト
+    private List<GameObject> charapows = new List<GameObject>();
+    public GameObject EnemyPowPrefab;
+
+    //敵の捕虜リスト
+    private List<GameObject> enemypows = new List<GameObject>();
+    public GameObject CharacterPowPrefab;
+
+
     // トリガーに入ってきた瞬間
     public void OnTriggerEnter(Collider other)
     {
@@ -81,6 +91,19 @@ public class Finder : MonoBehaviour {
                         Debug.Log("Catched!");
                         Debug.Log(dist);
                         chachedflg = true;
+
+                        if(this.transform.parent.gameObject.layer.Equals("Character"))
+                        {
+                            AddPow_Character();
+                            Destroy(other.gameObject);
+                            Debug.Log("CharacterPow!");
+                        }
+                        else
+                        {
+                            AddPow_Enemy();
+                            Destroy(other.gameObject);
+                            Debug.Log("EnemyPow!");
+                        }
                     }
 
 
@@ -98,4 +121,21 @@ public class Finder : MonoBehaviour {
             }
         }
     }
+
+    public void AddPow_Character()
+    {
+        var ins = Instantiate(EnemyPowPrefab,new Vector3(4,2,charapows.Count+10), Quaternion.identity);
+
+        charapows.Add(ins);
+
+    }
+
+    public void AddPow_Enemy()
+    {
+        var ins = Instantiate(CharacterPowPrefab, new Vector3(-4,2,enemypows.Count-10), Quaternion.identity);
+
+        enemypows.Add(ins);
+
+    }
+
 }
