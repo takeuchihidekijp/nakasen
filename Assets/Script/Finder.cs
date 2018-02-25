@@ -12,6 +12,16 @@ public class Finder : MonoBehaviour {
     //つかまったフラグ
     public bool chachedflg = false;
 
+    //逃げる用のフラグ
+    public bool escape_down_flg = false;
+
+    public bool escape_up_flg = false;
+
+    public bool escape_right_flg = false;
+
+    public bool escape_left_flg = false;
+
+
     //見つけた相手の GameObject を保持する変数
     public GameObject target;
 
@@ -90,24 +100,33 @@ public class Finder : MonoBehaviour {
                     {
                         Debug.Log("Catched!");
                         Debug.Log(dist);
+                        //捕まえたので追いかけるフラグをオフにして捕まえたフラグをオンにする
+                        chargeflg = false;
                         chachedflg = true;
 
                         Destroy(other.gameObject);
 
                         if (this.transform.parent.gameObject.name == "Character(Clone)")
                         {
+
                             AddPow_Character();
                             Destroy(other.gameObject);
                             Debug.Log("CharacterPow!");
                             Debug.Log(this.transform.parent.gameObject.name);
                         }
-                        else
+
+                        if (this.transform.parent.gameObject.name == "Enemys(Clone)")
                         {
                             AddPow_Enemy();
                             Destroy(other.gameObject);
                             Debug.Log("EnemyPow!");
                             Debug.Log(this.transform.parent.gameObject.name);
                         }
+                        else
+                        {
+                            Debug.Log("何かがおかしい!");
+                        }
+                        
 
                     }
 
@@ -116,9 +135,56 @@ public class Finder : MonoBehaviour {
                 }
                 else
                 {
+
                     Debug.Log("Found: Escape");
                     chargeflg = false;
                     escapeflg = true;
+
+                    //otherの方が強いのでotherの位置から自分の位置をひく
+                    Vector3 dist_escape = other.transform.position - this.transform.parent.position;
+
+                    if (Mathf.Abs(dist_escape.x) < Mathf.Abs(dist_escape.z))
+                    {
+                        if(dist_escape.z > 0)
+                        {
+                            //下に逃げる
+                            escape_down_flg = true;
+                            escape_up_flg = false;
+                            escape_right_flg = false;
+                            escape_left_flg = false;
+
+                        }
+                        else
+                        {
+                            //上に逃げる
+                            escape_down_flg = false;
+                            escape_up_flg = true;
+                            escape_right_flg = false;
+                            escape_left_flg = false;
+
+
+                        }
+                    }
+                    else
+                    {
+                        // X軸の距離がZ軸の距離より大きい
+                        if(dist_escape.x > 0)
+                        {
+                            // 左に逃げる
+                            escape_down_flg = false;
+                            escape_up_flg = false;
+                            escape_right_flg = false;
+                            escape_left_flg = true;
+                        }
+                        else
+                        {
+                            // 右に逃げる
+                            escape_down_flg = false;
+                            escape_up_flg = false;
+                            escape_right_flg = true;
+                            escape_left_flg = false;
+                        }
+                    }
                 }
 
              //  if(this)

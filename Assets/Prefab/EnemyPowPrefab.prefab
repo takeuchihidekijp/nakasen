@@ -2340,8 +2340,9 @@ MonoBehaviour:
   escapeflg: 0
   chachedflg: 0
   target: {fileID: 0}
-  EnemyPowPrefab: {fileID: 0}
-  CharacterPowPrefab: {fileID: 0}
+  EnemyPowPrefab: {fileID: 1100607420583988, guid: 0ebea46cffa54354ba92a14ca2afe0be,
+    type: 2}
+  CharacterPowPrefab: {fileID: 1089126869612850}
 --- !u!135 &135004435609917700
 SphereCollider:
   m_ObjectHideFlags: 1

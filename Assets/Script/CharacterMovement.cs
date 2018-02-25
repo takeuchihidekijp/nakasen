@@ -182,28 +182,29 @@ public class CharacterMovement : MonoBehaviour {
         //  if(transform.GetComponentInChildren<Finder>().chargeflg == true)
         if (transform.GetComponentInChildren<Finder>().chargeflg == true && transform.GetComponentInChildren<Finder>().target != null)
        {
-            Debug.Log("CharacterMovement: Charge");
+            movestate = MoveState.Chase;
 
-            nav.SetDestination(transform.GetComponentInChildren<Finder>().target.transform.position);
 
-            //つかまえたら捕虜にする(Finderでやるので廃止）
-            if (transform.GetComponentInChildren<Finder>().chachedflg == true)
-            {
-              //  AddPow();
-            }
+        }
 
+        //逃げる
+        else if(transform.GetComponentInChildren<Finder>().escapeflg == true && transform.GetComponentInChildren<Finder>().target != null)
+        {
+            movestate = MoveState.Escape;
         }
 
         // 目的地についたら戻り先を決める
 
-        if ((nav.hasPath && nav.remainingDistance < 0.5f)  || (backflg == true))
+        else if ((nav.hasPath && nav.remainingDistance < 0.5f)  || (backflg == true))
         {
-
-            int r = Random.Range(0, returnpointList.Count);
-            nav.SetDestination(returnpointList[r].transform.position);
 
             movestate = MoveState.Back;
 
+        }
+        //どれにも当てはまらず、行き先が不明な場合
+        else if(nav.hasPath == false){
+            int m = Random.Range(0, movepointList.Count);
+            nav.SetDestination(movepointList[m].transform.position);
         }
 
 
@@ -213,16 +214,42 @@ public class CharacterMovement : MonoBehaviour {
     void Chase()
     {
         // ||(this.transform.position.z >= 5)
+
+        nav.SetDestination(transform.GetComponentInChildren<Finder>().target.transform.position);
+        
+        
+
+        if (transform.GetComponentInChildren<Finder>().chachedflg == true)
+        {
+            //捕まえたらステータスをForwardに戻す
+            movestate = MoveState.Forward;
+        }
     }
 
     //逃げるロジック
     void Escape()
     {
-
+        if(transform.GetComponentInChildren<Finder>().escape_down_flg == true)
+        {
+            Escape_down();
+        }else if (transform.GetComponentInChildren<Finder>().escape_up_flg == true)
+        {
+            Escape_up();
+        }else if (transform.GetComponentInChildren<Finder>().escape_right_flg == true)
+        {
+            Escape_right();
+        }else if (transform.GetComponentInChildren<Finder>().escape_left_flg == true)
+        {
+            Escape_left();
+        }
     }
 
     void Back()
     {
+
+        int r = Random.Range(0, returnpointList.Count);
+        nav.SetDestination(returnpointList[r].transform.position);
+
         if (nav.hasPath && nav.remainingDistance < 0.5f)
         {
 
@@ -236,5 +263,33 @@ public class CharacterMovement : MonoBehaviour {
         //ゴール地点に到達したら自分を消す
         Destroy(this.gameObject);
         
+    }
+
+    void Escape_down()
+    {
+        Debug.Log("Chara Escape_down!");
+        //仮
+        movestate = MoveState.Forward;
+    }
+
+    void Escape_up()
+    {
+        Debug.Log("Chara Escape_up!");
+        //仮
+        movestate = MoveState.Forward;
+    }
+
+    void Escape_right()
+    {
+        Debug.Log("Chara Escape_right!");
+        //仮
+        movestate = MoveState.Forward;
+    }
+
+    void Escape_left()
+    {
+        Debug.Log("Chara Escape_left!");
+        //仮
+        movestate = MoveState.Forward;
     }
 }
