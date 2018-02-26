@@ -215,6 +215,12 @@ public class CharacterMovement : MonoBehaviour {
     {
         // ||(this.transform.position.z >= 5)
 
+        if (transform.GetComponentInChildren<Finder>().target == null)
+        {
+            movestate = MoveState.Stay;
+            return;
+        }
+
         nav.SetDestination(transform.GetComponentInChildren<Finder>().target.transform.position);
         
         

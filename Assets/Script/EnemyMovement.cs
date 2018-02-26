@@ -180,9 +180,13 @@ public class EnemyMovement : MonoBehaviour {
     //追いかけるロジック
     void Chase()
     {
+        if(transform.GetComponentInChildren<Finder>().target == null)
+        {
+            movestate = MoveState.Stay;
+            return;
+        }
+
         nav.SetDestination(transform.GetComponentInChildren<Finder>().target.transform.position);
-
-
 
         if (transform.GetComponentInChildren<Finder>().chachedflg == true)
         {

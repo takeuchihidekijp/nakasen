@@ -108,23 +108,29 @@ public class Finder : MonoBehaviour {
 
                         if (this.transform.parent.gameObject.name == "Character(Clone)")
                         {
+                            //仮
+                            gameObject.GetComponent<GameManager>().AddPow_Character();
 
-                            AddPow_Character();
+                            //AddPow_Character();
                             Destroy(other.gameObject);
                             Debug.Log("CharacterPow!");
                             Debug.Log(this.transform.parent.gameObject.name);
                         }
 
-                        if (this.transform.parent.gameObject.name == "Enemys(Clone)")
+                        else if (this.transform.parent.gameObject.name == "Enemys(Clone)")
                         {
-                            AddPow_Enemy();
+                            //仮
+                            gameObject.GetComponent<GameManager>().AddPow_Enemy();
+
+                        //    AddPow_Enemy();
                             Destroy(other.gameObject);
                             Debug.Log("EnemyPow!");
                             Debug.Log(this.transform.parent.gameObject.name);
                         }
-                        else
+                        else if(this.transform.parent.gameObject)
                         {
                             Debug.Log("何かがおかしい!");
+                            Debug.Log(this.transform.parent.gameObject.name);
                         }
                         
 
@@ -152,6 +158,7 @@ public class Finder : MonoBehaviour {
                             escape_up_flg = false;
                             escape_right_flg = false;
                             escape_left_flg = false;
+                            Debug.Log("Found: Escape 下に逃げる");
 
                         }
                         else
@@ -161,7 +168,7 @@ public class Finder : MonoBehaviour {
                             escape_up_flg = true;
                             escape_right_flg = false;
                             escape_left_flg = false;
-
+                            Debug.Log("Found: Escape 上に逃げる");
 
                         }
                     }
@@ -175,6 +182,8 @@ public class Finder : MonoBehaviour {
                             escape_up_flg = false;
                             escape_right_flg = false;
                             escape_left_flg = true;
+
+                            Debug.Log("Found: Escape 左に逃げる");
                         }
                         else
                         {
@@ -183,6 +192,8 @@ public class Finder : MonoBehaviour {
                             escape_up_flg = false;
                             escape_right_flg = true;
                             escape_left_flg = false;
+
+                            Debug.Log("Found: Escape 右に逃げる");
                         }
                     }
                 }
