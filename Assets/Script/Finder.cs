@@ -109,7 +109,11 @@ public class Finder : MonoBehaviour {
                         if (this.transform.parent.gameObject.name == "Character(Clone)")
                         {
                             //仮
-                            gameObject.GetComponent<GameManager>().AddPow_Character();
+                            GameObject powcreate = GameObject.Find("PowCreate");
+
+                            powcreate.GetComponent<GameManager>().AddPow_Character();
+
+                         //   gameObject.GetComponent<GameManager>().AddPow_Character();
 
                             //AddPow_Character();
                             Destroy(other.gameObject);
@@ -120,7 +124,11 @@ public class Finder : MonoBehaviour {
                         else if (this.transform.parent.gameObject.name == "Enemys(Clone)")
                         {
                             //仮
-                            gameObject.GetComponent<GameManager>().AddPow_Enemy();
+                            GameObject enemypowcreate = GameObject.Find("PowCreate");
+
+                            enemypowcreate.GetComponent<GameManager>().AddPow_Enemy();
+
+                        //    gameObject.GetComponent<GameManager>().AddPow_Enemy();
 
                         //    AddPow_Enemy();
                             Destroy(other.gameObject);

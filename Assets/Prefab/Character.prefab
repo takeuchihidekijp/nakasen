@@ -2354,10 +2354,14 @@ MonoBehaviour:
   chargeflg: 0
   escapeflg: 0
   chachedflg: 0
+  escape_down_flg: 0
+  escape_up_flg: 0
+  escape_right_flg: 0
+  escape_left_flg: 0
   target: {fileID: 0}
-  EnemyPowPrefab: {fileID: 1100607420583988, guid: 0ebea46cffa54354ba92a14ca2afe0be,
+  EnemyPowPrefab: {fileID: 1089126869612850, guid: 4c266a516524fc4489c0f00f41824c3a,
     type: 2}
-  CharacterPowPrefab: {fileID: 1089126869612850, guid: 4c266a516524fc4489c0f00f41824c3a,
+  CharacterPowPrefab: {fileID: 1100607420583988, guid: 0ebea46cffa54354ba92a14ca2afe0be,
     type: 2}
 --- !u!114 &114794973600554622
 MonoBehaviour:

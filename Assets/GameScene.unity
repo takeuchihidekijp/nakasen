@@ -1028,9 +1028,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59f84b940fea3404fa8fd6f98094636e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPowPrefab: {fileID: 1100607420583988, guid: 0ebea46cffa54354ba92a14ca2afe0be,
+  EnemyPowPrefab: {fileID: 1089126869612850, guid: 4c266a516524fc4489c0f00f41824c3a,
     type: 2}
-  CharacterPowPrefab: {fileID: 1089126869612850, guid: 4c266a516524fc4489c0f00f41824c3a,
+  CharacterPowPrefab: {fileID: 1100607420583988, guid: 0ebea46cffa54354ba92a14ca2afe0be,
     type: 2}
 --- !u!4 &1515033630
 Transform:

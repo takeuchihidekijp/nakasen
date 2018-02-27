@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour {
 
     public void AddPow_Character()
     {
-        var ins = Instantiate(EnemyPowPrefab, new Vector3(4, 2, charapows.Count + 10), Quaternion.identity);
+        var ins = Instantiate(EnemyPowPrefab, new Vector3(-4, 2, charapows.Count - 10), Quaternion.identity);
 
         charapows.Add(ins);
 
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour {
 
     public void AddPow_Enemy()
     {
-        var ins = Instantiate(CharacterPowPrefab, new Vector3(-4, 2, enemypows.Count - 10), Quaternion.identity);
+        var ins = Instantiate(CharacterPowPrefab, new Vector3(4, 2, enemypows.Count + 10), Quaternion.identity);
 
         enemypows.Add(ins);
 
