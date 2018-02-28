@@ -86,7 +86,7 @@ public class Finder : MonoBehaviour {
                     //追いかける
                     Debug.Log("Found: Charge");
                     chargeflg = true;
-                    escapeflg = false;
+                 //   escapeflg = false;
 
                     // 追いかける相手を変数に渡す
                     target = other.gameObject;
@@ -113,9 +113,6 @@ public class Finder : MonoBehaviour {
 
                             powcreate.GetComponent<GameManager>().AddPow_Character();
 
-                         //   gameObject.GetComponent<GameManager>().AddPow_Character();
-
-                            //AddPow_Character();
                             Destroy(other.gameObject);
                             Debug.Log("CharacterPow!");
                             Debug.Log(this.transform.parent.gameObject.name);
@@ -128,9 +125,6 @@ public class Finder : MonoBehaviour {
 
                             enemypowcreate.GetComponent<GameManager>().AddPow_Enemy();
 
-                        //    gameObject.GetComponent<GameManager>().AddPow_Enemy();
-
-                        //    AddPow_Enemy();
                             Destroy(other.gameObject);
                             Debug.Log("EnemyPow!");
                             Debug.Log(this.transform.parent.gameObject.name);
@@ -209,26 +203,10 @@ public class Finder : MonoBehaviour {
                     }
                 }
 
-             //  if(this)
 
             }
         }
     }
 
-    public void AddPow_Character()
-    {
-        var ins = Instantiate(EnemyPowPrefab,new Vector3(4,2,charapows.Count+10), Quaternion.identity);
-
-        charapows.Add(ins);
-
-    }
-
-    public void AddPow_Enemy()
-    {
-        var ins = Instantiate(CharacterPowPrefab, new Vector3(-4,2,enemypows.Count-10), Quaternion.identity);
-
-        enemypows.Add(ins);
-
-    }
 
 }
