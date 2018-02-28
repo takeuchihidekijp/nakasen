@@ -104,6 +104,7 @@ public class Finder : MonoBehaviour {
                         chargeflg = false;
                         chachedflg = true;
 
+                        //！！なぜ2回呼ぶのか別途確認！！
                         Destroy(other.gameObject);
 
                         if (this.transform.parent.gameObject.name == "Character(Clone)")
@@ -112,7 +113,7 @@ public class Finder : MonoBehaviour {
                             GameObject powcreate = GameObject.Find("PowCreate");
 
                             powcreate.GetComponent<GameManager>().AddPow_Character();
-
+                            //！！なぜ2回呼ぶのか別途確認！！
                             Destroy(other.gameObject);
                             Debug.Log("CharacterPow!");
                             Debug.Log(this.transform.parent.gameObject.name);
@@ -124,7 +125,7 @@ public class Finder : MonoBehaviour {
                             GameObject enemypowcreate = GameObject.Find("PowCreate");
 
                             enemypowcreate.GetComponent<GameManager>().AddPow_Enemy();
-
+                            //！！なぜ2回呼ぶのか別途確認！！
                             Destroy(other.gameObject);
                             Debug.Log("EnemyPow!");
                             Debug.Log(this.transform.parent.gameObject.name);
