@@ -32,9 +32,15 @@ public class GameManager : MonoBehaviour {
 
     public void AddPow_Enemy()
     {
+
+        //    UnityEngine.Debug.LogError(enemypows.Count);
+        //    var ins = Instantiate(CharacterPowPrefab, new Vector3(4, 2, enemypows.Count - 10), transform.rotation);
+        //   enemypows.Add(ins);
+
+
         var ins = Instantiate(CharacterPowPrefab, new Vector3(4, 2, enemypows.Count + 10), transform.rotation);
 
-        enemypows.Add(ins);
+           enemypows.Add(ins);
 
     }
 }

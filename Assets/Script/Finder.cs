@@ -154,6 +154,9 @@ public class Finder : MonoBehaviour {
                     chargeflg = false;
                     escapeflg = true;
 
+                    // 追いかけられている相手を変数に渡す
+                    target = other.gameObject;
+
                     //otherの方が強いのでotherの位置から自分の位置をひく
                     Vector3 dist_escape = other.transform.position - this.transform.parent.position;
 
