@@ -96,7 +96,7 @@ public class Finder : MonoBehaviour {
                     Debug.Log("Dist");
                     Debug.Log(dist);
 
-                    if(dist < 1.5f && chachedflg == false)
+                    if(dist < 1.0f && chachedflg == false)
                     {
                         Debug.Log("Catched!");
                         Debug.Log(dist);

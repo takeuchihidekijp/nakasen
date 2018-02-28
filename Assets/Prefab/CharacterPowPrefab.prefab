@@ -1844,7 +1844,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1100607420583988}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 1, y: 2, z: 1}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
@@ -1855,7 +1855,7 @@ Transform:
   - {fileID: 4678965850437652}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!4 &4678965850437652
 Transform:
   m_ObjectHideFlags: 1
@@ -2326,6 +2326,10 @@ MonoBehaviour:
   chargeflg: 0
   escapeflg: 0
   chachedflg: 0
+  escape_down_flg: 0
+  escape_up_flg: 0
+  escape_right_flg: 0
+  escape_left_flg: 0
   target: {fileID: 0}
   EnemyPowPrefab: {fileID: 1089126869612850, guid: 4c266a516524fc4489c0f00f41824c3a,
     type: 2}

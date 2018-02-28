@@ -182,6 +182,7 @@ public class CharacterMovement : MonoBehaviour {
         //  if(transform.GetComponentInChildren<Finder>().chargeflg == true)
         if (transform.GetComponentInChildren<Finder>().chargeflg == true && transform.GetComponentInChildren<Finder>().target != null)
        {
+            Debug.Log("movestate = MoveState.Chase");
             movestate = MoveState.Chase;
 
 
@@ -190,6 +191,7 @@ public class CharacterMovement : MonoBehaviour {
         //逃げる
         else if(transform.GetComponentInChildren<Finder>().escapeflg == true && transform.GetComponentInChildren<Finder>().target != null)
         {
+            Debug.Log("movestate = MoveState.Escape");
             movestate = MoveState.Escape;
         }
 

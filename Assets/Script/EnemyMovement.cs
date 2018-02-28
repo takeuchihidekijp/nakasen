@@ -148,6 +148,7 @@ public class EnemyMovement : MonoBehaviour {
 
         if (transform.GetComponentInChildren<Finder>().chargeflg == true && transform.GetComponentInChildren<Finder>().target != null)
         {
+            Debug.Log("enemy movestate = MoveState.Chase");
             movestate = MoveState.Chase;
 
 
@@ -156,6 +157,7 @@ public class EnemyMovement : MonoBehaviour {
         //逃げる
         else if (transform.GetComponentInChildren<Finder>().escapeflg == true && transform.GetComponentInChildren<Finder>().target != null)
         {
+            Debug.Log("enemy movestate = MoveState.Escape");
             movestate = MoveState.Escape;
         }
 
