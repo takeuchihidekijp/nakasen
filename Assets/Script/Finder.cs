@@ -86,7 +86,8 @@ public class Finder : MonoBehaviour {
                     //追いかける
                     Debug.Log("Found: Charge");
                     chargeflg = true;
-                 //   escapeflg = false;
+                    //いったんオフにするのを外してみる。デフォルトでFalseだから。
+                    //   escapeflg = false;
 
                     // 追いかける相手を変数に渡す
                     target = other.gameObject;

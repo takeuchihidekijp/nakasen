@@ -37,10 +37,17 @@ public class GameManager : MonoBehaviour {
         //    var ins = Instantiate(CharacterPowPrefab, new Vector3(4, 2, enemypows.Count - 10), transform.rotation);
         //   enemypows.Add(ins);
 
+        // （※）
+        // var ins = Instantiate(CharacterPowPrefab, new Vector3(4, 2, enemypows.Count + 10), transform.rotation);
+        // ins.transform.LookAt(Vector3.zero);    // （※）
+        // enemypows.Add(ins);
+        // （※）
+        var ins = Instantiate(CharacterPowPrefab, new Vector3(4, 2, 9.5f - enemypows.Count), CharacterPowPrefab.transform.rotation);
+        enemypows.Add(ins);
 
-        var ins = Instantiate(CharacterPowPrefab, new Vector3(4, 2, enemypows.Count + 10), transform.rotation);
-
-           enemypows.Add(ins);
+        /*
+（※）たまたま原点がフィールドの中心になっているのでこのようにしてみたが、Stage オブジェクトの Position を設定してもよいし、「こちらを向く」と指定したいオブジェクトを設定してもよい。後者の場合は Character と Enemy で違うオブジェクトを設定し、それぞれの方向を見るようにしてもよい。
+*/
 
     }
 }
