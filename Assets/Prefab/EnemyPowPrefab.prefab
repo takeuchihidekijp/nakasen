@@ -2294,7 +2294,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 122
   m_CollisionDetection: 0
 --- !u!65 &65137197823953916
 BoxCollider:
@@ -2339,6 +2339,10 @@ MonoBehaviour:
   chargeflg: 0
   escapeflg: 0
   chachedflg: 0
+  escape_down_flg: 0
+  escape_up_flg: 0
+  escape_right_flg: 0
+  escape_left_flg: 0
   target: {fileID: 0}
   EnemyPowPrefab: {fileID: 1100607420583988, guid: 0ebea46cffa54354ba92a14ca2afe0be,
     type: 2}

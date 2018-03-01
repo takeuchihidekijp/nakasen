@@ -26,7 +26,10 @@ public class CaracterSet : MonoBehaviour {
         if (Input.GetMouseButtonDown(0))
         {
             // マウス座標と指定カメラからの Rayを作成
-            Ray ray = strategyCamera.ScreenPointToRay(Input.mousePosition);
+            //ストラテジーカメラではなくいったんMainのみで。ストラテジー画面は今回は使わない
+         //   Ray ray = strategyCamera.ScreenPointToRay(Input.mousePosition);
+
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             // ray と何か（オブジェクト）がヒットするか？
