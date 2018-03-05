@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyMovement : MonoBehaviour {
 
@@ -18,6 +19,17 @@ public class EnemyMovement : MonoBehaviour {
 
     private int EnemyReturnPointCount = 5;
     private List<GameObject> enemy_returnpointList = new List<GameObject>();
+
+    //enemy用スコアを表示するテキスト
+    private GameObject enemy_scoreText;
+
+    //enemy用使えるメンバを表示するテキスト
+    private GameObject enemy_memberText;
+
+    //enemyの保持している捕虜の数を表示するテキスト
+    private GameObject enemy_powText;
+
+
 
     bool backflg = false;
 
@@ -59,6 +71,13 @@ public class EnemyMovement : MonoBehaviour {
         characterRigidbody = GetComponent<Rigidbody>();
 
         nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
+
+        this.enemy_scoreText = GameObject.Find("EnemyScoreText");
+
+        this.enemy_memberText = GameObject.Find("EnemyMemberText");
+
+        this.enemy_powText = GameObject.Find("EnemyPowText");
+
     }
 	
 	// Update is called once per frame

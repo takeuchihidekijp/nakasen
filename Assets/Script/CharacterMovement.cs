@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterMovement : MonoBehaviour {
 
@@ -16,6 +17,21 @@ public class CharacterMovement : MonoBehaviour {
     private int ReturnPointCount = 5;
     private List<GameObject> returnpointList = new List<GameObject>();
 
+    //Character用スコアを表示するテキスト
+    private GameObject chara_scoreText;
+
+    //Character用使えるメンバを表示するテキスト
+    private GameObject chara_memberText;
+
+    //Characterの保持している捕虜の数を表示するテキスト
+    private GameObject chara_powText;
+
+
+    //Game終了時に表示するテキスト（You Win or You Lose）
+    private GameObject stateText;
+
+    //GameのTimerを表示するテキスト
+    private GameObject timerText;
 
     [SerializeField] float m_interval = 1.5f;
     float m_timer;
@@ -60,8 +76,21 @@ public class CharacterMovement : MonoBehaviour {
         characterRigidbody = GetComponent<Rigidbody>();
 
         nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
-		
-	}
+
+
+        this.chara_scoreText = GameObject.Find("CharaScoreText");
+
+        this.chara_memberText = GameObject.Find("CharaMemberText");
+
+        this.chara_powText = GameObject.Find("CharaPowText");
+
+
+        this.stateText = GameObject.Find("GameResultText");
+
+        this.timerText = GameObject.Find("TimeText");
+
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
