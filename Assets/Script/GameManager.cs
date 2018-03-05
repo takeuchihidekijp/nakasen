@@ -5,12 +5,19 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
     //味方の捕虜リスト
-    private List<GameObject> charapows = new List<GameObject>();
+   // private List<GameObject> charapows = new List<GameObject>();
+    public List<GameObject> charapows = new List<GameObject>();
     public GameObject EnemyPowPrefab;
 
     //敵の捕虜リスト
-    private List<GameObject> enemypows = new List<GameObject>();
+   // private List<GameObject> enemypows = new List<GameObject>();
+    public List<GameObject> enemypows = new List<GameObject>();
     public GameObject CharacterPowPrefab;
+
+    //仮2018
+    public bool Character_PowFLG = false;
+    public bool Enemy_PowFLG = false;
+    //仮2018
 
     // Use this for initialization
     void Start () {
@@ -28,6 +35,12 @@ public class GameManager : MonoBehaviour {
 
         charapows.Add(ins);
 
+        //仮2018
+        if(charapows.Count > 1)
+        {
+            Character_PowFLG = true;
+        }
+        //仮2018
     }
 
     public void AddPow_Enemy()
@@ -44,6 +57,12 @@ public class GameManager : MonoBehaviour {
         // （※）
         var ins = Instantiate(CharacterPowPrefab, new Vector3(4, 2, 9.5f - enemypows.Count), CharacterPowPrefab.transform.rotation);
         enemypows.Add(ins);
+
+        //仮2018
+        if(enemypows.Count > 1)
+        {
+            Enemy_PowFLG = true;
+        }
 
         /*
 （※）たまたま原点がフィールドの中心になっているのでこのようにしてみたが、Stage オブジェクトの Position を設定してもよいし、「こちらを向く」と指定したいオブジェクトを設定してもよい。後者の場合は Character と Enemy で違うオブジェクトを設定し、それぞれの方向を見るようにしてもよい。

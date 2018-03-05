@@ -170,6 +170,10 @@ public class CharacterMovement : MonoBehaviour {
             int m = Random.Range(0, movepointList.Count);
             nav.SetDestination(movepointList[m].transform.position);
 
+            //仮2018
+         //   nav.speed = Random.Range(0.1f, 10.0f);
+            //仮2018
+
             movestate = MoveState.Forward;
         }
 
