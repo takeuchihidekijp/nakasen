@@ -95,6 +95,15 @@ public class CharacterMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        //Timerを減らす
+        GameData.TotalTime -= Time.deltaTime;
+
+        //Timerを表示
+        this.timerText.GetComponent<Text>().text = "Time" + GameData.TotalTime + "s";
+
+        //Scoreを表示
+        this.chara_scoreText.GetComponent<Text>().text = "Score:" + GameData.CharacterScore;
+
         switch (movestate)
         {
 
@@ -136,6 +145,8 @@ public class CharacterMovement : MonoBehaviour {
     {
         if(collision.gameObject.tag == "Line")
         {
+
+
             backflg = true;
         }
 
@@ -232,6 +243,9 @@ public class CharacterMovement : MonoBehaviour {
 
         else if ((nav.hasPath && nav.remainingDistance < 0.5f)  || (backflg == true))
         {
+
+            //中線を踏んだら得点追加
+            GameData.CharacterScore += 1;
 
             movestate = MoveState.Back;
 

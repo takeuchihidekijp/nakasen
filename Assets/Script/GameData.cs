@@ -13,6 +13,14 @@ public class GameData {
 
     //生成された順番
     public static int NUMBER_OF_GENERATE = 0;
-		
+
+    //ゲーム時間
+    public static float TotalTime = 2 * 60;
+
+    //Characterの得点
+    public static int CharacterScore = 0;
+
+    //Enemyの得点
+    public static int EnemyScore = 0;
 	
 }

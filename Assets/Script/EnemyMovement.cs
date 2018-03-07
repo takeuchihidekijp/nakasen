@@ -82,6 +82,10 @@ public class EnemyMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        //Scoreを表示
+        this.enemy_scoreText.GetComponent<Text>().text = "Score:" + GameData.EnemyScore;
+
         switch (movestate)
         {
 
@@ -184,7 +188,8 @@ public class EnemyMovement : MonoBehaviour {
 
         else if ((nav.hasPath && nav.remainingDistance < 0.5f) || (backflg == true))
         {
-
+            //目的地についたら得点追加
+            GameData.EnemyScore += 1;
             movestate = MoveState.Back;
 
         }
