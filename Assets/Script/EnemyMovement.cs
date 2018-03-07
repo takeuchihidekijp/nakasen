@@ -118,10 +118,10 @@ public class EnemyMovement : MonoBehaviour {
             backflg = true;
         }
 
-        //ぶつからないので廃止。
-        //   if (collision.gameObject.tag == "Character" && this.transform.gameObject.layer != collision.gameObject.layer)
-        //  {
-        // Debug.Log("Found: ぶつかった");
+        //ぶつからないので廃止方向。
+        if (collision.gameObject.tag == "Character" && this.transform.gameObject.layer != collision.gameObject.layer)
+        {
+         Debug.Log("敵の方！Found: ぶつかった");
 
         // if (this.transform.GetComponent<GenerateManager>().MyNumber > collision.gameObject.GetComponent<GenerateManager>().MyNumber)
         // {
@@ -132,7 +132,7 @@ public class EnemyMovement : MonoBehaviour {
 
         // Destroy(collision.gameObject);
         // }
-        //}
+        }
     }
 
 
@@ -216,6 +216,9 @@ public class EnemyMovement : MonoBehaviour {
 
         if (transform.GetComponentInChildren<Finder>().chachedflg == true)
         {
+            //捕まえたら得点追加
+            GameData.EnemyScore += 5;
+
             //捕まえたらステータスをForwardに戻す
             movestate = MoveState.Forward;
         }
@@ -249,6 +252,8 @@ public class EnemyMovement : MonoBehaviour {
 
         if (nav.hasPath && nav.remainingDistance < 0.5f)
         {
+            //ゴールについたら得点追加
+            GameData.EnemyScore += 1;
 
             movestate = MoveState.End;
 
@@ -257,6 +262,8 @@ public class EnemyMovement : MonoBehaviour {
 
     void End()
     {
+
+
         //ゴール地点に到達したら自分を消す
         Destroy(this.gameObject);
 
