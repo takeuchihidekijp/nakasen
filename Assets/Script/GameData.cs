@@ -22,5 +22,11 @@ public class GameData {
 
     //Enemyの得点
     public static int EnemyScore = 0;
-	
+
+    //Characterの保持している捕虜の数
+    public static int CharacterPowNumber = 0;
+
+    //Enemyの保持している捕虜の数
+    public static int EnemyPowNumber = 0;
+
 }

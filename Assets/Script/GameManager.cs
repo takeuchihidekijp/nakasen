@@ -19,10 +19,11 @@ public class GameManager : MonoBehaviour {
     public bool Enemy_PowFLG = false;
     //仮2018
 
+
     // Use this for initialization
     void Start () {
-		
-	}
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -35,8 +36,13 @@ public class GameManager : MonoBehaviour {
 
         charapows.Add(ins);
 
+        GameData.CharacterPowNumber += 1;
+
+        //捕まえたら得点追加
+        GameData.CharacterScore += 5;
+
         //仮2018
-        if(charapows.Count > 1)
+        if (charapows.Count > 1)
         {
             Character_PowFLG = true;
         }
@@ -58,8 +64,13 @@ public class GameManager : MonoBehaviour {
         var ins = Instantiate(CharacterPowPrefab, new Vector3(4, 2, 9.5f - enemypows.Count), CharacterPowPrefab.transform.rotation);
         enemypows.Add(ins);
 
+        GameData.EnemyPowNumber += 1;
+
+        //捕まえたら得点追加
+        GameData.EnemyScore += 5;
+
         //仮2018
-        if(enemypows.Count > 1)
+        if (enemypows.Count > 1)
         {
             Enemy_PowFLG = true;
         }

@@ -86,6 +86,10 @@ public class EnemyMovement : MonoBehaviour {
         //Scoreを表示
         this.enemy_scoreText.GetComponent<Text>().text = "Score:" + GameData.EnemyScore;
 
+        //Enemyの保持している捕虜の数を表示
+        this.enemy_powText.GetComponent<Text>().text = "EnemyPow:" + GameData.EnemyPowNumber;
+
+
         switch (movestate)
         {
 
@@ -216,8 +220,6 @@ public class EnemyMovement : MonoBehaviour {
 
         if (transform.GetComponentInChildren<Finder>().chachedflg == true)
         {
-            //捕まえたら得点追加
-            GameData.EnemyScore += 5;
 
             //捕まえたらステータスをForwardに戻す
             movestate = MoveState.Forward;

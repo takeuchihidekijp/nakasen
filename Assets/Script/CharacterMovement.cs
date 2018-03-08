@@ -104,6 +104,10 @@ public class CharacterMovement : MonoBehaviour {
         //Scoreを表示
         this.chara_scoreText.GetComponent<Text>().text = "Score:" + GameData.CharacterScore;
 
+        //Characterの保持している捕虜の数表示
+        this.chara_powText.GetComponent<Text>().text = "CharaPow:" + GameData.CharacterPowNumber;
+
+
         switch (movestate)
         {
 
@@ -276,8 +280,6 @@ public class CharacterMovement : MonoBehaviour {
 
         if (transform.GetComponentInChildren<Finder>().chachedflg == true)
         {
-            //捕まえたら得点追加
-            GameData.CharacterScore += 5;
 
             //捕まえたらステータスをForwardに戻す
             movestate = MoveState.Forward;
