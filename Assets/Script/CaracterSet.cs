@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CaracterSet : MonoBehaviour {
 
@@ -11,12 +12,15 @@ public class CaracterSet : MonoBehaviour {
 
     public GameObject prefab;
 
+    //Character用使えるメンバを表示するテキスト
+    private GameObject chara_memberText;
 
+    // Use this for initialization
+    void Start () {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+        this.chara_memberText = GameObject.Find("CharaMemberText");
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -62,12 +66,18 @@ public class CaracterSet : MonoBehaviour {
                     if (putable == true)
                     {
                         Instantiate(prefab, hit.point + Vector3.up * 0.6f, prefab.transform.rotation);
+
+                        GameData.NUMBER_OF_CHARACTERS -= 1;
+
+                        
                     }
 
 
                 }
             }
         }
+
+        this.chara_memberText.GetComponent<Text>().text = "CharaMem:" + GameData.NUMBER_OF_CHARACTERS;
 
     }
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemySet : MonoBehaviour {
 
@@ -13,10 +14,15 @@ public class EnemySet : MonoBehaviour {
     [SerializeField] float m_interval = 10.0f;
     float m_timer;
 
+    //enemy用使えるメンバを表示するテキスト
+    private GameObject enemy_memberText;
+
     // Use this for initialization
     void Start () {
-		
-	}
+
+        this.enemy_memberText = GameObject.Find("EnemyMemberText");
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -28,6 +34,8 @@ public class EnemySet : MonoBehaviour {
             m_timer = 0f;
             CreateEnemy();
         }
+
+        this.enemy_memberText.GetComponent<Text>().text = "EnemyMember:" + GameData.NUMBER_OF_ENEMYS;
 
     }
 
@@ -74,6 +82,8 @@ public class EnemySet : MonoBehaviour {
                         {
                          //   Vector3 pos = new Vector3(Random.Range(-5.0f, 5.0f), 0, Random.Range(10.0f, 20.0f));
                             Instantiate(prefab, hit.point + Vector3.up * 0.6f, Quaternion.identity);
+
+                        GameData.NUMBER_OF_ENEMYS -= 1;
                         }
 
 

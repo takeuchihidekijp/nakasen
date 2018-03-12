@@ -41,6 +41,9 @@ public class GameManager : MonoBehaviour {
         //捕まえたら得点追加
         GameData.CharacterScore += 5;
 
+        //捕虜になったので使えるキャラクターを減らす
+        GameData.NUMBER_OF_ENEMYS -= 1;
+
         //仮2018
         if (charapows.Count > 1)
         {
@@ -68,6 +71,9 @@ public class GameManager : MonoBehaviour {
 
         //捕まえたら得点追加
         GameData.EnemyScore += 5;
+
+        //捕虜になったので使えるキャラクターを減らす
+        GameData.NUMBER_OF_CHARACTERS -= 1;
 
         //仮2018
         if (enemypows.Count > 1)
