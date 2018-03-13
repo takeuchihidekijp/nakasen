@@ -78,7 +78,7 @@ public class EnemySet : MonoBehaviour {
 
                         }
 
-                        if(putable == true)
+                        if(putable == true && GameData.NUMBER_OF_ENEMYS > 0)
                         {
                          //   Vector3 pos = new Vector3(Random.Range(-5.0f, 5.0f), 0, Random.Range(10.0f, 20.0f));
                             Instantiate(prefab, hit.point + Vector3.up * 0.6f, Quaternion.identity);

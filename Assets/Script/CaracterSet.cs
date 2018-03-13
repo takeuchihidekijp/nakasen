@@ -63,7 +63,7 @@ public class CaracterSet : MonoBehaviour {
 
                     }
 
-                    if (putable == true)
+                    if (putable == true && GameData.NUMBER_OF_CHARACTERS > 0)
                     {
                         Instantiate(prefab, hit.point + Vector3.up * 0.6f, prefab.transform.rotation);
 
