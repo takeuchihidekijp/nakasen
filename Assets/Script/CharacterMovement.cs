@@ -324,9 +324,10 @@ public class CharacterMovement : MonoBehaviour {
 
 
         //ゴール地点に到達したら自分を消す
+        GameData.NUMBER_OF_CHARACTERS += 1;
         Destroy(this.gameObject);
 
-        GameData.NUMBER_OF_CHARACTERS += 1;
+        
         
     }
 

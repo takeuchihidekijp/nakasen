@@ -264,10 +264,12 @@ public class EnemyMovement : MonoBehaviour {
 
     void End()
     {
+
+
         //ゴール地点に到達したら自分を消す
+        GameData.NUMBER_OF_ENEMYS += 1;
         Destroy(this.gameObject);
 
-        GameData.NUMBER_OF_ENEMYS += 1;
 
     }
 

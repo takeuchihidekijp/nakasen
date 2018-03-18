@@ -2379,6 +2379,10 @@ MonoBehaviour:
   chargeflg: 0
   escapeflg: 0
   chachedflg: 0
+  escape_down_flg: 0
+  escape_up_flg: 0
+  escape_right_flg: 0
+  escape_left_flg: 0
   target: {fileID: 0}
   EnemyPowPrefab: {fileID: 1100607420583988, guid: 0ebea46cffa54354ba92a14ca2afe0be,
     type: 2}

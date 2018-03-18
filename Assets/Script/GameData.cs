@@ -29,4 +29,10 @@ public class GameData {
     //Enemyの保持している捕虜の数
     public static int EnemyPowNumber = 0;
 
+    //Characterの追いかける限界位置(Z軸)
+    public static float CharacterChaseLimitZ = 0;
+
+    //Enemyの追いかける限界位置(Z軸)
+    public static float EnemyChaseLimitZ = 0;
+
 }
