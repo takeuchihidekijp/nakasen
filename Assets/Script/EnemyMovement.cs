@@ -89,6 +89,12 @@ public class EnemyMovement : MonoBehaviour {
         //Enemyの保持している捕虜の数を表示
         this.enemy_powText.GetComponent<Text>().text = "EnemyPow:" + GameData.EnemyPowNumber;
 
+        //敵がキャラクターを特定の位置まで最後まで追いかけないようにする
+        if (this.transform.position.z < -9)
+        {
+            movestate = MoveState.Back;
+        }
+
 
         switch (movestate)
         {

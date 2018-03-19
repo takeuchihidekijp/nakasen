@@ -107,6 +107,12 @@ public class CharacterMovement : MonoBehaviour {
         //Characterの保持している捕虜の数表示
         this.chara_powText.GetComponent<Text>().text = "CharaPow:" + GameData.CharacterPowNumber;
 
+        //キャラクターが敵を特定の位置まで最後まで追いかけないようにする
+        if (this.transform.position.z > 9)
+        {
+            movestate = MoveState.Back;
+        }
+
 
         switch (movestate)
         {

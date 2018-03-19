@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour {
         // ins.transform.LookAt(Vector3.zero);    // （※）
         // enemypows.Add(ins);
         // （※）
-        var ins = Instantiate(CharacterPowPrefab, new Vector3(4, 2, 9.5f - enemypows.Count), CharacterPowPrefab.transform.rotation);
+        var ins = Instantiate(CharacterPowPrefab, new Vector3(4, 2, 10 - enemypows.Count), CharacterPowPrefab.transform.rotation);
         enemypows.Add(ins);
 
         GameData.EnemyPowNumber += 1;
