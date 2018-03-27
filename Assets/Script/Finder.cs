@@ -218,7 +218,50 @@ public class Finder : MonoBehaviour {
 
             }
             Debug.Log("ダンマリもしくは通常移動？");
-            //ここにロジックを入れてみる
+            //ここにロジックを入れてみる 以下、ダンマリ対策ロジック（仮）
+
+            //相手との距離が近い場合は捕まえる
+            float dist1 = Vector3.Distance(this.transform.parent.position, other.transform.position);
+            Debug.Log("Dist1 ダンマリもしくは通常移動");
+            Debug.Log(dist1);
+
+            if (this.transform.parent.GetComponent<GenerateManager>().MyNumber > other.gameObject.GetComponent<GenerateManager>().MyNumber && dist1 < 1.0f && chachedflg == false)
+            {
+                //捕まえたので追いかけるフラグをオフにして捕まえたフラグをオンにする
+                chargeflg = false;
+                chachedflg = true;
+
+                if (this.transform.parent.gameObject.name == "Character(Clone)")
+                {
+                    //仮
+                    GameObject powcreate = GameObject.Find("PowCreate");
+
+                    powcreate.GetComponent<GameManager>().AddPow_Character();
+                    Destroy(other.gameObject);
+                    Debug.Log("CharacterPow!");
+                    Debug.Log(this.transform.parent.gameObject.name);
+                }
+
+                else if (this.transform.parent.gameObject.name == "Enemys(Clone)")
+                {
+                    //仮
+                    GameObject enemypowcreate = GameObject.Find("PowCreate");
+
+                    enemypowcreate.GetComponent<GameManager>().AddPow_Enemy();
+                    //！！なぜ2回呼ぶのか別途確認！！
+                    Destroy(other.gameObject);
+                    Debug.Log("EnemyPow!");
+                    Debug.Log(this.transform.parent.gameObject.name);
+                }
+                else if (this.transform.parent.gameObject)
+                {
+                    Debug.Log("何かがおかしい!");
+                    Debug.Log(this.transform.parent.gameObject.name);
+                }
+
+
+            }
+            //ここまでロジックを入れてみる ダンマリ対策ロジック（仮）
         }
     }
 

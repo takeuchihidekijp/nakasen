@@ -32,7 +32,9 @@ public class GameManager : MonoBehaviour {
 
     public void AddPow_Character()
     {
-        var ins = Instantiate(EnemyPowPrefab, new Vector3(-4, 2, charapows.Count - 10), Quaternion.identity);
+        //ここでの-10はGameData.CharacterAreaZと同じ意味。変えたら変える
+        //var ins = Instantiate(EnemyPowPrefab, new Vector3(-4, 2, charapows.Count - 10), Quaternion.identity);
+        var ins = Instantiate(EnemyPowPrefab, new Vector3(-4, 2, charapows.Count - 13), Quaternion.identity);
 
         charapows.Add(ins);
 
@@ -65,7 +67,8 @@ public class GameManager : MonoBehaviour {
         // ins.transform.LookAt(Vector3.zero);    // （※）
         // enemypows.Add(ins);
         // （※）
-        var ins = Instantiate(CharacterPowPrefab, new Vector3(4, 2, 10 - enemypows.Count), CharacterPowPrefab.transform.rotation);
+        //var ins = Instantiate(CharacterPowPrefab, new Vector3(4, 2, 10 - enemypows.Count), CharacterPowPrefab.transform.rotation);
+        var ins = Instantiate(CharacterPowPrefab, new Vector3(4, 2, GameData.EnemyAreaZ - enemypows.Count), CharacterPowPrefab.transform.rotation);
         enemypows.Add(ins);
 
         GameData.EnemyPowNumber += 1;

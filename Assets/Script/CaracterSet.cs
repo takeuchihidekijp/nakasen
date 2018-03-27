@@ -62,8 +62,9 @@ public class CaracterSet : MonoBehaviour {
                         }
 
                     }
-                    //おける場合は、上記条件でputable == trueの場合と残キャラがいる場合と配置可能位置（Z軸で―10以下）
-                    if (putable == true && GameData.NUMBER_OF_CHARACTERS > 0 && hit.point.z < -10)
+                    //おける場合は、上記条件でputable == trueの場合と残キャラがいる場合と配置可能位置（Z軸で―10以下）if (putable == true && GameData.NUMBER_OF_CHARACTERS > 0 && hit.point.z < GameData.CharacterAreaZ)
+                    //if (putable == true && GameData.NUMBER_OF_CHARACTERS > 0 && hit.point.z < -10)
+                    if (putable == true && GameData.NUMBER_OF_CHARACTERS > 0 && hit.point.z < GameData.CharacterAreaZ)
                     {
                         Instantiate(prefab, hit.point + Vector3.up * 0.6f, prefab.transform.rotation);
 

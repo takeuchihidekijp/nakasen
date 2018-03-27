@@ -20,14 +20,6 @@ public class EnemyMovement : MonoBehaviour {
     private int EnemyReturnPointCount = 5;
     private List<GameObject> enemy_returnpointList = new List<GameObject>();
 
-    //enemy用スコアを表示するテキスト
-    private GameObject enemy_scoreText;
-
-    //enemy用使えるメンバを表示するテキスト
-    private GameObject enemy_memberText;
-
-    //enemyの保持している捕虜の数を表示するテキスト
-    private GameObject enemy_powText;
 
 
 
@@ -72,25 +64,16 @@ public class EnemyMovement : MonoBehaviour {
 
         nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
 
-        this.enemy_scoreText = GameObject.Find("EnemyScoreText");
-
-        this.enemy_memberText = GameObject.Find("EnemyMemberText");
-
-        this.enemy_powText = GameObject.Find("EnemyPowText");
 
     }
 	
 	// Update is called once per frame
 	void Update () {
 
-        //Scoreを表示
-        this.enemy_scoreText.GetComponent<Text>().text = "Score:" + GameData.EnemyScore;
-
-        //Enemyの保持している捕虜の数を表示
-        this.enemy_powText.GetComponent<Text>().text = "EnemyPow:" + GameData.EnemyPowNumber;
 
         //敵がキャラクターを特定の位置まで最後まで追いかけないようにする
-        if (this.transform.position.z < -9)
+        //if (this.transform.position.z < -9)
+        if (this.transform.position.z < GameData.EnemyChaseLimitZ)
         {
             movestate = MoveState.Back;
         }

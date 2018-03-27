@@ -14,24 +14,27 @@ public class CameraSelect : MonoBehaviour {
         StCam = GameObject.Find("StorategyCamera");
 
         StCam.SetActive(false);
-		
-	}
+        MainCam.SetActive(true);
+    }
 	
 	// Update is called once per frame
-	void Update () {
-        if (Input.GetKeyDown("space"))
-        {
-            if (MainCam.activeSelf)
-            {
-                MainCam.SetActive(false);
-                StCam.SetActive(true);
-            }
-            else
-            {
-                MainCam.SetActive(true);
-                StCam.SetActive(false);
-            }
-        }
+	void Update ()
+    {
+
+        //戦略シーンはいったん外す
+        //if (Input.GetKeyDown("space"))
+        //{
+        //if (MainCam.activeSelf)
+        //{
+        //MainCam.SetActive(false);
+        //StCam.SetActive(true);
+        //}
+        //      else
+        //{
+        //MainCam.SetActive(true);
+        //StCam.SetActive(false);
+        //}
+        //}
     }
 
 
