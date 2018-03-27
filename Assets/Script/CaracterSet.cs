@@ -12,13 +12,10 @@ public class CaracterSet : MonoBehaviour {
 
     public GameObject prefab;
 
-    //Character用使えるメンバを表示するテキスト
-    private GameObject chara_memberText;
 
     // Use this for initialization
     void Start () {
 
-        this.chara_memberText = GameObject.Find("CharaMemberText");
 
     }
 	
@@ -78,7 +75,6 @@ public class CaracterSet : MonoBehaviour {
             }
         }
 
-        this.chara_memberText.GetComponent<Text>().text = "CharaMem:" + GameData.NUMBER_OF_CHARACTERS;
 
     }
 

@@ -14,13 +14,10 @@ public class EnemySet : MonoBehaviour {
     [SerializeField] float m_interval = 10.0f;
     float m_timer;
 
-    //enemy用使えるメンバを表示するテキスト
-    private GameObject enemy_memberText;
 
     // Use this for initialization
     void Start () {
 
-        this.enemy_memberText = GameObject.Find("EnemyMemberText");
 
     }
 	
@@ -35,7 +32,6 @@ public class EnemySet : MonoBehaviour {
             CreateEnemy();
         }
 
-        this.enemy_memberText.GetComponent<Text>().text = "EnemyMember:" + GameData.NUMBER_OF_ENEMYS;
 
     }
 

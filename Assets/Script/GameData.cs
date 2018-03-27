@@ -15,7 +15,7 @@ public class GameData {
     public static int NUMBER_OF_GENERATE = 0;
 
     //ゲーム時間
-    public static float TotalTime = 3 * 60;
+    public static float TotalTime = 1 * 60;
 
     //Characterの得点
     public static int CharacterScore = 0;

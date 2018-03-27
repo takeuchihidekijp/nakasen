@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameScreenEvent : MonoBehaviour {
 
@@ -30,6 +31,8 @@ public class GameScreenEvent : MonoBehaviour {
 
     //enemyの保持している捕虜の数を表示するテキスト
     private GameObject enemy_powText;
+
+    private bool isGameOver = false;
 
 
     // Use this for initialization
@@ -76,6 +79,38 @@ public class GameScreenEvent : MonoBehaviour {
 
         //Enemyの保持している捕虜の数を表示
         this.enemy_powText.GetComponent<Text>().text = "EnemyPow:" + GameData.EnemyPowNumber;
+
+        //CharacterMember数を表示
+        this.chara_memberText.GetComponent<Text>().text = "CharaMem:" + GameData.NUMBER_OF_CHARACTERS;
+
+        //EnemyMember数を表示
+        this.enemy_memberText.GetComponent<Text>().text = "EnemyMember:" + GameData.NUMBER_OF_ENEMYS;
+
+        if(GameData.TotalTime <= 0)
+        {
+            this.isGameOver = true;
+
+
+                if(GameData.CharacterScore >= GameData.EnemyScore)
+                {
+                    this.stateText.GetComponent<Text>().text = "YOU WIN";
+                }
+                else
+                {
+                    this.stateText.GetComponent<Text>().text = "YOU LOSE";
+                }
+        }
+
+        // ゲームオーバになった場合
+        if (this.isGameOver)
+        {
+            // クリックされたらシーンをロードする（追加）
+            if (Input.GetMouseButtonDown(0))
+            {
+                //GameSceneを読み込む（追加）
+                SceneManager.LoadScene("GameScene");
+            }
+        }
 
     }
 }
