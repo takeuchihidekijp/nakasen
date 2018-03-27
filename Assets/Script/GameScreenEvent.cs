@@ -56,10 +56,29 @@ public class GameScreenEvent : MonoBehaviour {
 
         this.enemy_powText = GameObject.Find("EnemyPowText");
 
+        //初期化 Start
+        isGameOver = false;
+
+        GameData.TotalTime = 1 * 60;
+
+        GameData.NUMBER_OF_CHARACTERS = 10;
+
+        GameData.NUMBER_OF_ENEMYS = 10;
+
+        GameData.NUMBER_OF_GENERATE = 0;
+
+        GameData.CharacterScore = 0;
+
+        GameData.EnemyScore = 0;
+
+        GameData.CharacterPowNumber = 0;
+
+        GameData.EnemyPowNumber = 0;
+        //初期化 End
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 
         //Timerを減らす
         GameData.TotalTime -= Time.deltaTime;
@@ -84,7 +103,7 @@ public class GameScreenEvent : MonoBehaviour {
         this.chara_memberText.GetComponent<Text>().text = "CharaMem:" + GameData.NUMBER_OF_CHARACTERS;
 
         //EnemyMember数を表示
-        this.enemy_memberText.GetComponent<Text>().text = "EnemyMember:" + GameData.NUMBER_OF_ENEMYS;
+        this.enemy_memberText.GetComponent<Text>().text = "EnemyMem:" + GameData.NUMBER_OF_ENEMYS;
 
         if(GameData.TotalTime <= 0)
         {
