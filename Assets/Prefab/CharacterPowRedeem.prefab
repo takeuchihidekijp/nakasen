@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 135963908065387050}
   - component: {fileID: 114815814417651164}
   m_Layer: 9
-  m_Name: CharacterPowRedeemem
+  m_Name: CharacterPowRedeem
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
