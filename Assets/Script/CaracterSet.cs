@@ -12,6 +12,8 @@ public class CaracterSet : MonoBehaviour {
 
     public GameObject prefab;
 
+    public GameObject PowRedeemPrefab;
+
 
     // Use this for initialization
     void Start () {
@@ -63,7 +65,19 @@ public class CaracterSet : MonoBehaviour {
                     //if (putable == true && GameData.NUMBER_OF_CHARACTERS > 0 && hit.point.z < -10)
                     if (putable == true && GameData.NUMBER_OF_CHARACTERS > 0 && hit.point.z < GameData.CharacterAreaZ)
                     {
-                        Instantiate(prefab, hit.point + Vector3.up * 0.6f, prefab.transform.rotation);
+                        //通常モードなら普通のキャラをそうでないなら捕虜解放用のキャラクターを設定
+                        GameObject normal_flg = GameObject.Find("Normal");                   
+
+                        if (normal_flg.GetComponent<ToggleCharacterChange>().normal_flg == true)
+                        {
+                            Instantiate(prefab, hit.point + Vector3.up * 0.6f, prefab.transform.rotation);
+
+                        }
+                        else
+                        {
+                            Instantiate(PowRedeemPrefab, hit.point + Vector3.up * 0.6f, PowRedeemPrefab.transform.rotation);
+                        }
+                      //  Instantiate(prefab, hit.point + Vector3.up * 0.6f, prefab.transform.rotation);
 
                         GameData.NUMBER_OF_CHARACTERS -= 1;
 

@@ -303,6 +303,8 @@ MonoBehaviour:
   mainCamera: {fileID: 99014882}
   strategyCamera: {fileID: 826701657}
   prefab: {fileID: 1181124414777330, guid: 8f4f3a69a6f19934f961285308c25d3b, type: 2}
+  PowRedeemPrefab: {fileID: 1181124414777330, guid: e8ec686991cec0146a431f5afb534f72,
+    type: 2}
 --- !u!1 &126617343
 GameObject:
   m_ObjectHideFlags: 0
@@ -1231,6 +1233,7 @@ MonoBehaviour:
   mainCamera: {fileID: 99014882}
   strategyCamera: {fileID: 826701657}
   prefab: {fileID: 1181124414777330, guid: 8f4f3a69a6f19934f961285308c25d3b, type: 2}
+  PowRedeemPrefab: {fileID: 0}
 --- !u!1 &914896461
 GameObject:
   m_ObjectHideFlags: 0

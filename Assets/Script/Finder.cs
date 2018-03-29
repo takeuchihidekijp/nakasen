@@ -121,6 +121,11 @@ public class Finder : MonoBehaviour {
                         if (this.transform.parent.gameObject.name == "Character(Clone)")
                         {
                             //仮
+                            //`gameObject` はスクリプトがアタッチされたゲームオブジェクトを指すので、ここではFinderがアタッチされているSearchColliderを指します。
+                            // つまり `gameObject.GetComponent<GameManager>()` はSearchColliderからGameManagerのコンポーネントを取ってくるという意味になります。
+                           //SearchColliderはGameManagerを持っていないので結果がNullとなり、エラーになります。
+                            //GameManagerを持っているのはPowCreateなのでそちらからGetComponentする必要があります。
+                            //
                             GameObject powcreate = GameObject.Find("PowCreate");
 
                             powcreate.GetComponent<GameManager>().AddPow_Character();
