@@ -42,6 +42,12 @@ public class GameManager : MonoBehaviour {
         //捕虜解放したので得点追加
         GameData.CharacterScore = GameData.CharacterScore + enemypows.Count * 5;
 
+        var clones = GameObject.FindGameObjectsWithTag("Pow");
+
+        foreach (var clone in clones)
+        {
+            Destroy(clone);
+        }
 
         enemypows.RemoveAll(enemypows => enemypows);
         Debug.Log("RedeemPowCharacter");

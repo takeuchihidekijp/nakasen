@@ -102,6 +102,8 @@ public class CharacterPowRedeemem : MonoBehaviour {
 
             powredeem.GetComponent<GameManager>().RedeemPowCharacter();
 
+            movestate = MoveState.Back;
+
         }
 
         if (collision.gameObject.tag == "Line")
