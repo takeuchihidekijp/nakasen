@@ -90,16 +90,26 @@ public class CharacterPowRedeemem : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("捕虜解放用キャラが何かとぶつかった？");
+        Debug.Log(collision.gameObject);
+        Debug.Log(collision.gameObject.tag);
+
+        if (collision.gameObject.tag == "Pow")
+        {
+            Debug.Log("捕虜解放");
+
+            GameObject powredeem = GameObject.Find("PowCreate");
+
+            powredeem.GetComponent<GameManager>().RedeemPowCharacter();
+
+        }
+
         if (collision.gameObject.tag == "Line")
         {
             backflg = true;
         }
 
-            if (collision.gameObject.tag == "Pow" && this.transform.gameObject.layer != collision.gameObject.layer)
-             {
-                 Debug.Log("捕虜解放");
 
-             }
        
     }
 
