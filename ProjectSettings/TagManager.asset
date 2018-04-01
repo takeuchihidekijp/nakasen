@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Line
   - Pow
+  - EnemyPow
   layers:
   - Default
   - TransparentFX

@@ -55,6 +55,26 @@ public class GameManager : MonoBehaviour {
 
     }
 
+    public void RedeemPowEnemy()
+    {
+        //捕虜解放したので表示を０に
+        GameData.EnemyPowNumber = 0;
+        //解放した分の使えるキャラクター増加
+        GameData.NUMBER_OF_ENEMYS += charapows.Count;
+
+        //捕虜解放したので得点追加
+        GameData.EnemyScore = GameData.EnemyScore + charapows.Count * 5;
+
+        var clones = GameObject.FindGameObjectsWithTag("EnemyPow");
+
+        foreach (var clone in clones)
+        {
+            Destroy(clone);
+        }
+
+        enemypows.RemoveAll(charapows => charapows);
+    }
+
     public void AddPow_Character()
     {
         //ここでの-10はGameData.CharacterAreaZと同じ意味。変えたら変える

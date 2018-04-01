@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 135248934314835290}
   m_Layer: 10
   m_Name: EnemyPowPrefab
-  m_TagString: Pow
+  m_TagString: EnemyPow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -174,9 +174,9 @@ GameObject:
   - component: {fileID: 54571758519577234}
   - component: {fileID: 195258957875581166}
   - component: {fileID: 114148428573319174}
-  - component: {fileID: 114405629286638730}
   - component: {fileID: 135512854959914682}
   - component: {fileID: 114266800123745506}
+  - component: {fileID: 114725308410373006}
   m_Layer: 10
   m_Name: EnemysPowRedeemem
   m_TagString: Character
@@ -2353,18 +2353,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generateList: 
   MyNumber: 0
---- !u!114 &114405629286638730
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1181124414777330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9329eef7c518dd42a41f1de62e64d19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_interval: 1.5
 --- !u!114 &114413903327745302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2388,6 +2376,18 @@ MonoBehaviour:
     type: 2}
   CharacterPowPrefab: {fileID: 1089126869612850, guid: 4c266a516524fc4489c0f00f41824c3a,
     type: 2}
+--- !u!114 &114725308410373006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1181124414777330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfbd413de6a6aa1458414e746778fe87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_interval: 1.5
 --- !u!135 &135325086124762060
 SphereCollider:
   m_ObjectHideFlags: 1

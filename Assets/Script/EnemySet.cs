@@ -7,6 +7,8 @@ public class EnemySet : MonoBehaviour {
 
     public GameObject prefab;
 
+    public GameObject PowRedeemprefab;
+
     /// <summary>敵のカウンター。敵のオブジェクト名を unique にするために使う</summary>
     int enemyCounter;
 
@@ -77,7 +79,16 @@ public class EnemySet : MonoBehaviour {
                         if(putable == true && GameData.NUMBER_OF_ENEMYS > 0)
                         {
                          //   Vector3 pos = new Vector3(Random.Range(-5.0f, 5.0f), 0, Random.Range(10.0f, 20.0f));
+                         //相手の捕虜がいる場合、確率で捕虜救出用のキャラを出撃させる。５から９の数値より大きくかつ相手の得点が自分のより高い場合
+                         if(GameData.CharacterPowNumber > Random.Range(5,9) && GameData.CharacterScore > GameData.EnemyScore)
+                        {
+                            Instantiate(PowRedeemprefab, hit.point + Vector3.up * 0.6f, Quaternion.identity);
+                        }
+                        else
+                        {
                             Instantiate(prefab, hit.point + Vector3.up * 0.6f, Quaternion.identity);
+                        }
+                         //   Instantiate(prefab, hit.point + Vector3.up * 0.6f, Quaternion.identity);
 
                         GameData.NUMBER_OF_ENEMYS -= 1;
                         }

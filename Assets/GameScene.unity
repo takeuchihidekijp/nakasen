@@ -2916,6 +2916,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1181124414777330, guid: 5d429292b5d2b8547a23af1e5aa82d8f, type: 2}
+  PowRedeemprefab: {fileID: 1181124414777330, guid: 7cea60ff51bd5ec46b86e69e196b1dde,
+    type: 2}
   m_interval: 1.5
 --- !u!4 &2135834480
 Transform:

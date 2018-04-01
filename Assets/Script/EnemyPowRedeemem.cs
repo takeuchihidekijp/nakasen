@@ -2,23 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterPowRedeemem : MonoBehaviour {
-
+public class EnemyPowRedeemem : MonoBehaviour {
 
     Vector3 movement;
     Rigidbody characterRigidbody;
 
     UnityEngine.AI.NavMeshAgent nav;
 
-    private int MovePointCount = 5;
-    private List<GameObject> movepointList = new List<GameObject>();
-
-    private int ReturnPointCount = 5;
-    private List<GameObject> returnpointList = new List<GameObject>();
-
-
     [SerializeField] float m_interval = 1.5f;
     float m_timer;
+
+    //移動ポイントのオブジェクト用List（キャラクターの移動ポイントをMovePointとする）
+    private int EnemyMovePointCount = 5;
+    private List<GameObject> enemy_movepointList = new List<GameObject>();
+
+    private int EnemyReturnPointCount = 5;
+    private List<GameObject> enemy_returnpointList = new List<GameObject>();
+
+
+
 
     bool backflg = false;
 
@@ -37,23 +39,23 @@ public class CharacterPowRedeemem : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-        for (int i = 1; i <= MovePointCount; ++i)
+        for (int i = 1; i <= EnemyMovePointCount; ++i)
         {
-            GameObject movepoint = GameObject.Find("MovePoint" + i.ToString());
+            GameObject movepoint = GameObject.Find("EnemyMovePoint" + i.ToString());
 
             if (movepoint != null)
             {
-                movepointList.Add(movepoint);
+                enemy_movepointList.Add(movepoint);
             }
         }
 
-        for (int i = 1; i <= ReturnPointCount; ++i)
+        for (int i = 1; i <= EnemyReturnPointCount; ++i)
         {
-            GameObject returnpoint = GameObject.Find("ReturnPoint" + i.ToString());
+            GameObject returnpoint = GameObject.Find("EnemyReturnPoint" + i.ToString());
 
             if (returnpoint != null)
             {
-                returnpointList.Add(returnpoint);
+                enemy_returnpointList.Add(returnpoint);
             }
         }
 
@@ -85,22 +87,17 @@ public class CharacterPowRedeemem : MonoBehaviour {
                 break;
         }
 
-
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("捕虜解放用キャラが何かとぶつかった？");
-        Debug.Log(collision.gameObject);
-        Debug.Log(collision.gameObject.tag);
 
-        if (collision.gameObject.tag == "Pow")
+        if (collision.gameObject.tag == "EnemyPow")
         {
-            Debug.Log("捕虜解放");
 
             GameObject powredeem = GameObject.Find("PowCreate");
 
-            powredeem.GetComponent<GameManager>().RedeemPowCharacter();
+            powredeem.GetComponent<GameManager>().RedeemPowEnemy();
 
             movestate = MoveState.Back;
 
@@ -112,7 +109,7 @@ public class CharacterPowRedeemem : MonoBehaviour {
         }
 
 
-       
+
     }
 
     void Stay()
@@ -128,15 +125,32 @@ public class CharacterPowRedeemem : MonoBehaviour {
             //つかまっているキャラがいればそこを目指す　そうでなければ通常の移動ポイントへ
             if (powcreate.GetComponent<GameManager>().Character_PowFLG == true)
             {
-                nav.SetDestination(powcreate.GetComponent<GameManager>().enemypows[powcreate.GetComponent<GameManager>().enemypows.Count - 1].transform.position);
+                //検証が必要
+                nav.SetDestination(powcreate.GetComponent<GameManager>().charapows[powcreate.GetComponent<GameManager>().charapows.Count - 1].transform.position);
 
                 return;
             }
             else
             {
-                int m = Random.Range(0, movepointList.Count);
-                nav.SetDestination(movepointList[m].transform.position);
+                int m = Random.Range(0, enemy_movepointList.Count);
+                nav.SetDestination(enemy_movepointList[m].transform.position);
             }
+
+            movestate = MoveState.Forward;
+        }
+
+    }
+
+    void Stay1()
+    {
+        m_timer += Time.deltaTime;
+
+        if (m_timer > m_interval)
+        {
+            m_timer = 0f;
+            // 行き先を決める
+            int m = Random.Range(0, enemy_movepointList.Count);
+            nav.SetDestination(enemy_movepointList[m].transform.position);
 
             movestate = MoveState.Forward;
         }
@@ -154,12 +168,13 @@ public class CharacterPowRedeemem : MonoBehaviour {
 
     void Back()
     {
-
-        int r = Random.Range(0, returnpointList.Count);
-        nav.SetDestination(returnpointList[r].transform.position);
+        int r = Random.Range(0, enemy_returnpointList.Count);
+        nav.SetDestination(enemy_returnpointList[r].transform.position);
 
         if (nav.hasPath && nav.remainingDistance < 0.5f)
         {
+            //ゴールについたら得点追加
+            GameData.EnemyScore += 1;
 
             movestate = MoveState.End;
 
@@ -168,9 +183,12 @@ public class CharacterPowRedeemem : MonoBehaviour {
 
     void End()
     {
+
+
         //ゴール地点に到達したら自分を消す
+        GameData.NUMBER_OF_ENEMYS += 1;
         Destroy(this.gameObject);
 
-    }
 
+    }
 }

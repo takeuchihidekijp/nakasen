@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //MonoBehaviourはClassの特性上取る
+//GameScreenEventとTitleでも初期化しているので注意
 public class GameData {
 
     //敵の数の上限
@@ -15,7 +16,7 @@ public class GameData {
     public static int NUMBER_OF_GENERATE = 0;
 
     //ゲーム時間
-    public static float TotalTime = 1 * 60;
+    public static float TotalTime = 120;
 
     //Characterの得点
     public static int CharacterScore = 0;

@@ -59,7 +59,7 @@ public class GameScreenEvent : MonoBehaviour {
         //初期化 Start
         isGameOver = false;
 
-        GameData.TotalTime = 1 * 60;
+        GameData.TotalTime = 2 * 60;
 
         GameData.NUMBER_OF_CHARACTERS = 10;
 
@@ -110,6 +110,8 @@ public class GameScreenEvent : MonoBehaviour {
             this.isGameOver = true;
 
 
+
+
                 if(GameData.CharacterScore >= GameData.EnemyScore)
                 {
                     this.stateText.GetComponent<Text>().text = "YOU WIN";
@@ -123,11 +125,16 @@ public class GameScreenEvent : MonoBehaviour {
         // ゲームオーバになった場合
         if (this.isGameOver)
         {
+            //ゲームオーバになったら時間を止める。
+            Time.timeScale = 0.0f;
+
             // クリックされたらシーンをロードする（追加）
             if (Input.GetMouseButtonDown(0))
             {
+                Time.timeScale = 1.0f;
+
                 //GameSceneを読み込む（追加）
-                SceneManager.LoadScene("GameScene");
+                SceneManager.LoadScene("Title");
             }
         }
 
