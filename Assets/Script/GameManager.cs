@@ -34,8 +34,8 @@ public class GameManager : MonoBehaviour {
     {
         Debug.Log(enemypows.Count);
 
-        //捕虜解放したので表示を０に
-        GameData.CharacterPowNumber = 0;
+        //捕虜解放したので表示を０に(プレイヤーが解放したので敵の保持している捕虜の数を０にする)
+        GameData.EnemyPowNumber = 0;
         //解放した分の使えるキャラクター増加
         GameData.NUMBER_OF_CHARACTERS += enemypows.Count;
 
@@ -57,8 +57,8 @@ public class GameManager : MonoBehaviour {
 
     public void RedeemPowEnemy()
     {
-        //捕虜解放したので表示を０に
-        GameData.EnemyPowNumber = 0;
+        //捕虜解放したので表示を０に（敵が解放したので味方の保持している捕虜の数を０にする）
+        GameData.CharacterPowNumber = 0;
         //解放した分の使えるキャラクター増加
         GameData.NUMBER_OF_ENEMYS += charapows.Count;
 
@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour {
             Destroy(clone);
         }
 
-        enemypows.RemoveAll(charapows => charapows);
+        charapows.RemoveAll(charapows => charapows);
     }
 
     public void AddPow_Character()
