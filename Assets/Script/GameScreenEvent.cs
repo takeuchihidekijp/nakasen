@@ -105,7 +105,22 @@ public class GameScreenEvent : MonoBehaviour {
         //EnemyMember数を表示
         this.enemy_memberText.GetComponent<Text>().text = "EnemyMem:" + GameData.NUMBER_OF_ENEMYS;
 
-        if(GameData.TotalTime <= 0)
+        //自分の捕まえた捕虜が相手のキャラクターの数と一緒になったら相手が全滅したと考える。
+        if(GameData.CharacterPowNumber == GameData.NUMBER_OF_ENEMYS_STATIC)
+        {
+         this.isGameOver = true;
+        
+        this.stateText.GetComponent<Text>().text = "YOU WIN";
+        }
+
+        if (GameData.EnemyPowNumber == GameData.NUMBER_OF_CHARACTERS_STATIC)
+        {
+        this.isGameOver = true;
+        this.stateText.GetComponent<Text>().text = "YOU LOSE";
+        
+        }
+
+        if (GameData.TotalTime <= 0)
         {
             this.isGameOver = true;
 

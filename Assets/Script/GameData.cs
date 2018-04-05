@@ -6,11 +6,15 @@ using UnityEngine;
 //GameScreenEventとTitleでも初期化しているので注意
 public class GameData {
 
-    //敵の数の上限
+    //敵の数の上限(生成の際のロジックに利用されるので他のコードから更新される。可変)
     public static int NUMBER_OF_ENEMYS = 10;
+    //敵の数の上限(ゲームの終了条件とかに利用されるため他のコードから変更しない。不変。言うまでもないが上記と数値を合わせること)
+    public static int NUMBER_OF_ENEMYS_STATIC = 10;
 
-    //Characterの数の上限
+    //Characterの数の上限(生成の際のロジックに利用されるので他のコードから更新される。可変)
     public static int NUMBER_OF_CHARACTERS = 10;
+    //Characterの数の上限(ゲームの終了条件とかに利用されるため他のコードから変更しない。不変。言うまでもないが上記と数値を合わせること)
+    public static int NUMBER_OF_CHARACTERS_STATIC = 10;
 
     //生成された順番
     public static int NUMBER_OF_GENERATE = 0;
