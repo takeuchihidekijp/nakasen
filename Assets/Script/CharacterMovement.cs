@@ -176,6 +176,10 @@ public class CharacterMovement : MonoBehaviour {
     {
         m_timer += Time.deltaTime;
 
+        Debug.Log(" Stay Timer キャラ");
+        Debug.Log(m_timer);
+        Debug.Log(m_interval);
+
         if (m_timer > m_interval)
         {
             m_timer = 0f;

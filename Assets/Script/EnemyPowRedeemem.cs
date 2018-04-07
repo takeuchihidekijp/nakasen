@@ -159,6 +159,13 @@ public class EnemyPowRedeemem : MonoBehaviour {
 
     void Forward()
     {
+        GameObject powcreate = GameObject.Find("PowCreate");
+
+        if (powcreate.GetComponent<GameManager>().Character_PowFLG == false)
+        {
+            movestate = MoveState.Back;
+        }
+
         //目標を見失ったら戻る
         if (nav.hasPath == false)
         {

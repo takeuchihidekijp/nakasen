@@ -42,6 +42,9 @@ public class GameManager : MonoBehaviour {
         //捕虜解放したので得点追加
         GameData.CharacterScore = GameData.CharacterScore + enemypows.Count * 5;
 
+        //捕虜解放したのでFLGをOffにする
+        Enemy_PowFLG = false;
+
         var clones = GameObject.FindGameObjectsWithTag("Pow");
 
         foreach (var clone in clones)
@@ -64,6 +67,9 @@ public class GameManager : MonoBehaviour {
 
         //捕虜解放したので得点追加
         GameData.EnemyScore = GameData.EnemyScore + charapows.Count * 5;
+
+        //捕虜解放したのでFLGをOffにする
+        Character_PowFLG = false;
 
         var clones = GameObject.FindGameObjectsWithTag("EnemyPow");
 

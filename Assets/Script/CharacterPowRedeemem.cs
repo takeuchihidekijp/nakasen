@@ -17,7 +17,8 @@ public class CharacterPowRedeemem : MonoBehaviour {
     private List<GameObject> returnpointList = new List<GameObject>();
 
 
-    [SerializeField] float m_interval = 1.5f;
+   [SerializeField] float m_interval = 1.5f;
+
     float m_timer;
 
     bool backflg = false;
@@ -119,47 +120,96 @@ public class CharacterPowRedeemem : MonoBehaviour {
     {
         m_timer += Time.deltaTime;
 
+        Debug.Log(" Stay Timer 捕虜解放用キャラ");
+        Debug.Log(m_timer);
+        Debug.Log(m_interval);
+
         if (m_timer > m_interval)
         {
+            Debug.Log(" Stay2 捕虜解放用キャラnav.pathStatus and nav.hasPath");
+            Debug.Log(nav.pathStatus);
+            Debug.Log(nav.hasPath);
+
             m_timer = 0f;
             // 行き先を決める
             GameObject powcreate = GameObject.Find("PowCreate");
 
+            Debug.Log(" Stay3 捕虜解放用キャラ powcreate.GetComponent<GameManager>().Character_PowFLG");
+            Debug.Log(powcreate.GetComponent<GameManager>().Enemy_PowFLG);
+            Debug.Log(nav.hasPath);
+
             //つかまっているキャラがいればそこを目指す　そうでなければ通常の移動ポイントへ
-            if (powcreate.GetComponent<GameManager>().Character_PowFLG == true)
+            if (powcreate.GetComponent<GameManager>().Enemy_PowFLG == true)
             {
                 nav.SetDestination(powcreate.GetComponent<GameManager>().enemypows[powcreate.GetComponent<GameManager>().enemypows.Count - 1].transform.position);
 
+                movestate = MoveState.Forward;
+
                 return;
             }
-            else
+            else if(nav.hasPath == false)
             {
                 int m = Random.Range(0, movepointList.Count);
                 nav.SetDestination(movepointList[m].transform.position);
+
+                Debug.Log(" Stay4 捕虜解放用キャラ powcreate.GetComponent<GameManager>().Character_PowFLG");
+                Debug.Log(m);
+                Debug.Log(nav.pathStatus);
+                Debug.Log(nav.hasPath);
             }
 
             movestate = MoveState.Forward;
         }
 
+        Debug.Log(" Stay 捕虜解放用キャラnav.pathStatus and nav.hasPath");
+        Debug.Log(nav.pathStatus);
+        Debug.Log(nav.hasPath);
+
     }
 
     void Forward()
     {
+        Debug.Log("捕虜解放用キャラnav.pathStatus and nav.hasPath");
+        Debug.Log(nav.pathStatus);
+        Debug.Log(nav.hasPath);
+
+        GameObject powcreate = GameObject.Find("PowCreate");
+
+        if (powcreate.GetComponent<GameManager>().Enemy_PowFLG == false)
+        {
+            movestate = MoveState.Back;
+        }
+
         //目標を見失ったら戻る
         if (nav.hasPath == false)
         {
             movestate = MoveState.Back;
+           
         }
     }
 
     void Back()
     {
 
+        Debug.Log("Back1捕虜解放用キャラnav.pathStatus and nav.hasPath");
+        Debug.Log(nav.pathStatus);
+        Debug.Log(nav.hasPath);
+
         int r = Random.Range(0, returnpointList.Count);
         nav.SetDestination(returnpointList[r].transform.position);
 
+
         if (nav.hasPath && nav.remainingDistance < 0.5f)
         {
+            //上記で設定したnav.SetDestinationが効かずに以前の設定が反映されてしまっておりnav.remainingDistanceの条件にすぐに入ってしまって
+            //すぐにEndになってしまう。解放したばかりだと当然距離は近いので。
+            //対応を検討
+            Debug.Log("Back2捕虜解放用キャラnav.pathStatus and nav.hasPath");
+            Debug.Log(nav.pathStatus);
+            Debug.Log(nav.hasPath);
+
+            //ゴールについたら得点追加
+            GameData.CharacterScore += 1;
 
             movestate = MoveState.End;
 
@@ -168,7 +218,12 @@ public class CharacterPowRedeemem : MonoBehaviour {
 
     void End()
     {
+        Debug.Log("End捕虜解放用キャラnav.pathStatus and nav.hasPath");
+        Debug.Log(nav.pathStatus);
+        Debug.Log(nav.hasPath);
+
         //ゴール地点に到達したら自分を消す
+        GameData.NUMBER_OF_CHARACTERS += 1;
         Destroy(this.gameObject);
 
     }

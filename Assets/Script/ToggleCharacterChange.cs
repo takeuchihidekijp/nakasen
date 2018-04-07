@@ -26,12 +26,12 @@ public class ToggleCharacterChange : MonoBehaviour {
         if(this.toggle.isOn == true)
         {
             normal_flg = true;
-            Debug.Log("Toggleが変更されました normal_flg = true");
+        //    Debug.Log("Toggleが変更されました normal_flg = true");
         }
         else
         {
             normal_flg = false;
-            Debug.Log("Toggleが変更されました normal_flg = false");
+        //    Debug.Log("Toggleが変更されました normal_flg = false");
         }
     }
 }
