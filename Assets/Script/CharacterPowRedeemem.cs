@@ -175,7 +175,7 @@ public class CharacterPowRedeemem : MonoBehaviour {
 
         GameObject powcreate = GameObject.Find("PowCreate");
 
-        if (powcreate.GetComponent<GameManager>().Enemy_PowFLG == false)
+        if (powcreate.GetComponent<GameManager>().Enemy_PowFLG == false && (backflg == true))
         {
             movestate = MoveState.Back;
         }
@@ -198,22 +198,32 @@ public class CharacterPowRedeemem : MonoBehaviour {
         int r = Random.Range(0, returnpointList.Count);
         nav.SetDestination(returnpointList[r].transform.position);
 
+        Debug.Log("Back1.5捕虜解放用キャラnav.pathStatus and nav.hasPath");
+        Debug.Log(nav.pathStatus);
+        Debug.Log(nav.hasPath);
+        Debug.Log(nav.pathPending);
+        Debug.Log(nav.remainingDistance);
+        Debug.Log(returnpointList[r].transform.position);
 
-        if (nav.hasPath && nav.remainingDistance < 0.5f)
-        {
-            //上記で設定したnav.SetDestinationが効かずに以前の設定が反映されてしまっておりnav.remainingDistanceの条件にすぐに入ってしまって
-            //すぐにEndになってしまう。解放したばかりだと当然距離は近いので。
-            //対応を検討
-            Debug.Log("Back2捕虜解放用キャラnav.pathStatus and nav.hasPath");
-            Debug.Log(nav.pathStatus);
-            Debug.Log(nav.hasPath);
+        movestate = MoveState.End;
 
-            //ゴールについたら得点追加
-            GameData.CharacterScore += 1;
+        //!nav.pathPendingは試しに実装
+        //今までのコードだとBackが複数呼ばれる間に「int r = Random.Range(0, returnpointList.Count);」が何度も呼ばれ戻り値が確定しないので
+        //以下のように距離がちじまったらステータスを変更するのではなく戻るポイントを設定したらEndにもっていくように設定。
+        //   if (!nav.pathPending && nav.hasPath && nav.remainingDistance < 0.5f)
+        //   {
 
-            movestate = MoveState.End;
+        //上記で設定したnav.SetDestinationが効かずに以前の設定が反映されてしまっておりnav.remainingDistanceの条件にすぐに入ってしまって
+        //すぐにEndになってしまう。解放したばかりだと当然距離は近いので。
+        //対応を検討
 
-        }
+
+        //ゴールについたら得点追加
+        //    GameData.CharacterScore += 1;
+
+        //  movestate = MoveState.End;
+
+        // }
     }
 
     void End()
@@ -221,10 +231,20 @@ public class CharacterPowRedeemem : MonoBehaviour {
         Debug.Log("End捕虜解放用キャラnav.pathStatus and nav.hasPath");
         Debug.Log(nav.pathStatus);
         Debug.Log(nav.hasPath);
+        Debug.Log(nav.remainingDistance);
+
+        if (!nav.pathPending && nav.hasPath && nav.remainingDistance < 0.5f)
+        {
+            GameData.CharacterScore += 1;
+            //ゴール地点に到達したら自分を消す
+            GameData.NUMBER_OF_CHARACTERS += 1;
+            Destroy(this.gameObject);
+        }
+
 
         //ゴール地点に到達したら自分を消す
-        GameData.NUMBER_OF_CHARACTERS += 1;
-        Destroy(this.gameObject);
+    //    GameData.NUMBER_OF_CHARACTERS += 1;
+    //    Destroy(this.gameObject);
 
     }
 
