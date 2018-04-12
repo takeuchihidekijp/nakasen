@@ -283,25 +283,39 @@ public class CharacterMovement : MonoBehaviour {
         int r = Random.Range(0, returnpointList.Count);
         nav.SetDestination(returnpointList[r].transform.position);
 
-        if (nav.hasPath && nav.remainingDistance < 0.5f)
-        {
-            //ゴールに付いたら得点追加
-            GameData.CharacterScore += 1;
-            movestate = MoveState.End;
+        movestate = MoveState.End;
 
-        }
+        //20180412 いったんコメント化
+        //  if (nav.hasPath && nav.remainingDistance < 0.5f)
+        //  {
+        //ゴールに付いたら得点追加
+        //      GameData.CharacterScore += 1;
+        //      movestate = MoveState.End;
+       // }
     }
 
     void End()
     {
 
+        if (!nav.pathPending && nav.hasPath && nav.remainingDistance < 0.5f)
+        {
+            //ゴールに付いたら得点追加
+            GameData.CharacterScore += 1;
+            movestate = MoveState.End;
+
+            //ゴール地点に到達したら自分を消す
+            GameData.NUMBER_OF_CHARACTERS += 1;
+            Destroy(this.gameObject);
+
+        }
 
         //ゴール地点に到達したら自分を消す
-        GameData.NUMBER_OF_CHARACTERS += 1;
-        Destroy(this.gameObject);
+        //20180412
+        // GameData.NUMBER_OF_CHARACTERS += 1;
+        // Destroy(this.gameObject);
 
-        
-        
+
+
     }
 
     void Escape_down()

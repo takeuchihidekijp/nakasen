@@ -241,23 +241,31 @@ public class EnemyMovement : MonoBehaviour {
         int r = Random.Range(0, enemy_returnpointList.Count);
         nav.SetDestination(enemy_returnpointList[r].transform.position);
 
-        if (nav.hasPath && nav.remainingDistance < 0.5f)
-        {
-            //ゴールについたら得点追加
-            GameData.EnemyScore += 1;
+        movestate = MoveState.End;
 
-            movestate = MoveState.End;
 
-        }
     }
 
     void End()
     {
+        Debug.Log("Enemy End()");
+        Debug.Log(nav.pathStatus);
+        Debug.Log(nav.hasPath);
+        Debug.Log(nav.pathPending);
+        Debug.Log(nav.remainingDistance);
+
+        if (!nav.pathPending && nav.hasPath && nav.remainingDistance < 0.5f)
+        {
+            //ゴールについたら得点追加
+            GameData.EnemyScore += 1;
+
+            //ゴール地点に到達したら自分を消す
+            GameData.NUMBER_OF_ENEMYS += 1;
+            Destroy(this.gameObject);
+
+        }
 
 
-        //ゴール地点に到達したら自分を消す
-        GameData.NUMBER_OF_ENEMYS += 1;
-        Destroy(this.gameObject);
 
 
     }
