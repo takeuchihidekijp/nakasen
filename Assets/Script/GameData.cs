@@ -6,6 +6,10 @@ using UnityEngine;
 //GameScreenEventとTitleでも初期化しているので注意
 public class GameData {
 
+    //Stageの横幅（味方から見て左右の逃げるロジックのチェックに使用。敵に使う場合は反対になる）
+    public static float StageChaseLimitLeftx = -4;
+    public static float StageChaseLimitRightx = 4;
+
     //敵の数の上限(生成の際のロジックに利用されるので他のコードから更新される。可変)
     public static int NUMBER_OF_ENEMYS = 10;
     //敵の数の上限(ゲームの終了条件とかに利用されるため他のコードから変更しない。不変。言うまでもないが上記と数値を合わせること)

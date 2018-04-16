@@ -272,29 +272,58 @@ public class EnemyMovement : MonoBehaviour {
 
     void Escape_down()
     {
-        Debug.Log("Enemy Escape_down!");
-        //仮
-        movestate = MoveState.Forward;
+        //戻るフラグがオンの場合は位置を+1(敵はキャラクターと向きが逆なので)したうえで陣地まで下がらせる
+        if (backflg == true)
+        {
+            Debug.Log("Enemy Escape_down!");
+            this.transform.Translate(0, 0, 0.5f);
+            movestate = MoveState.Back;
+        }
+        else
+        {
+            //仮
+            movestate = MoveState.Forward;
+        }
+
     }
 
     void Escape_up()
     {
-        Debug.Log("Enemy Escape_up!");
-        //仮
-        movestate = MoveState.Forward;
+        //戻るフラグがオンの場合は位置を-1(敵はキャラクターと向きが逆なので)したうえで陣地まで下がらせる
+        if (backflg == true)
+        {
+            Debug.Log("Enemy Escape_up!");
+            this.transform.Translate(0, 0, -0.5f);
+            movestate = MoveState.Back;
+        }
+        else
+        {
+            //仮
+            movestate = MoveState.Forward;
+        }
     }
 
     void Escape_right()
     {
         Debug.Log("Enemy Escape_right!");
-        //仮
+        //仮(Characterと向きが逆なので注意)仮のロジック
+        if (this.transform.position.x > GameData.StageChaseLimitLeftx)
+        {
+            this.transform.Translate(-0.5f, 0, 0);
+        }
+
         movestate = MoveState.Forward;
     }
 
     void Escape_left()
     {
         Debug.Log("Enemy Escape_left!");
-        //仮
+        //仮(Characterと向きが逆なので注意)仮のロジック
+        if (this.transform.position.x < GameData.StageChaseLimitRightx)
+        {
+            this.transform.Translate(0.5f, 0, 0);
+        }
+
         movestate = MoveState.Forward;
     }
 

@@ -320,22 +320,49 @@ public class CharacterMovement : MonoBehaviour {
 
     void Escape_down()
     {
-        Debug.Log("Chara Escape_down!");
-        //仮
-        movestate = MoveState.Forward;
+
+        //戻るフラグがオンの場合は位置を―1したうえで陣地まで下がらせる
+        if (backflg == true)
+        {
+            Debug.Log("Chara Escape_down!");
+            this.transform.Translate(0,0,-0.5f);
+            movestate = MoveState.Back;
+        }
+        else
+        {
+            //仮
+            movestate = MoveState.Forward;
+        }
+
     }
 
     void Escape_up()
     {
-        Debug.Log("Chara Escape_up!");
-        //仮
-        movestate = MoveState.Forward;
+        //戻るフラグがオンの場合は位置を+1したうえで陣地まで下がらせる
+        if (backflg == true)
+        {
+            Debug.Log("Chara Escape_up!");
+            this.transform.Translate(0, 0, 0.5f);
+            movestate = MoveState.Back;
+        }
+        else
+        {
+            //仮
+            movestate = MoveState.Forward;
+        }
+
     }
 
     void Escape_right()
     {
         Debug.Log("Chara Escape_right!");
         //仮
+
+        if (this.transform.position.x < GameData.StageChaseLimitRightx)
+        {
+            this.transform.Translate(0.5f, 0, 0);
+        }
+
         movestate = MoveState.Forward;
     }
 
@@ -343,6 +370,11 @@ public class CharacterMovement : MonoBehaviour {
     {
         Debug.Log("Chara Escape_left!");
         //仮
+        if (this.transform.position.x > GameData.StageChaseLimitLeftx)
+        {
+            this.transform.Translate(-0.5f, 0, 0);
+        }
+
         movestate = MoveState.Forward;
     }
 }

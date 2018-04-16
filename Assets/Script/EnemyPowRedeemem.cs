@@ -68,6 +68,12 @@ public class EnemyPowRedeemem : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        Debug.Log("Update　EnemyPowRedeemem");
+        Debug.Log(nav.pathStatus);
+        Debug.Log(nav.hasPath);
+        Debug.Log(movestate);
+        Debug.Log(nav.pathPending);
+
         //捕虜解放者は捕虜めがけて突っ込むだけで追いかけたり逃げたりしない。
 
         switch (movestate)
@@ -159,6 +165,11 @@ public class EnemyPowRedeemem : MonoBehaviour {
 
     void Forward()
     {
+
+        Debug.Log("捕虜解放用キャラnav.pathStatus and nav.hasPath　Enemy");
+        Debug.Log(nav.pathStatus);
+        Debug.Log(nav.hasPath);
+
         GameObject powcreate = GameObject.Find("PowCreate");
 
         if (powcreate.GetComponent<GameManager>().Character_PowFLG == false)
@@ -175,6 +186,10 @@ public class EnemyPowRedeemem : MonoBehaviour {
 
     void Back()
     {
+        Debug.Log("Back捕虜解放用キャラnav.pathStatus and nav.hasPath　Enemy");
+        Debug.Log(nav.pathStatus);
+        Debug.Log(nav.hasPath);
+
         int r = Random.Range(0, enemy_returnpointList.Count);
         nav.SetDestination(enemy_returnpointList[r].transform.position);
 
@@ -183,6 +198,11 @@ public class EnemyPowRedeemem : MonoBehaviour {
 
     void End()
     {
+        Debug.Log("End捕虜解放用キャラnav.pathStatus and nav.hasPath");
+        Debug.Log(nav.pathStatus);
+        Debug.Log(nav.hasPath);
+        Debug.Log(nav.remainingDistance);
+
 
         if (!nav.pathPending && nav.hasPath && nav.remainingDistance < 0.5f)
         {
@@ -195,8 +215,6 @@ public class EnemyPowRedeemem : MonoBehaviour {
 
 
         }
-
-
 
 
     }
