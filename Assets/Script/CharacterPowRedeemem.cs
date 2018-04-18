@@ -23,6 +23,9 @@ public class CharacterPowRedeemem : MonoBehaviour {
 
     bool backflg = false;
 
+    //スタミナ用のタイマー
+    float s_timer = 10.0f;
+
     enum MoveState
     {
         Stay,
@@ -68,6 +71,19 @@ public class CharacterPowRedeemem : MonoBehaviour {
 	void Update () {
 
         //捕虜解放者は捕虜めがけて突っ込むだけで追いかけたり逃げたりしない。
+
+        //スタミナに応じて速度を調整する
+        s_timer -= Time.deltaTime;
+        if (s_timer > 6)
+        {
+            nav.speed = s_timer;
+        }
+        else
+        {
+            nav.speed = 3.0f;
+        }
+        //ランダム廃止
+        //   nav.speed = Random.Range(0.1f, 10.0f);
 
         switch (movestate)
         {

@@ -17,9 +17,12 @@ public class CharacterMovement : MonoBehaviour {
     private int ReturnPointCount = 5;
     private List<GameObject> returnpointList = new List<GameObject>();
 
-
+    //キャラを配置してから実際に動作させるためのタイマー
     [SerializeField] float m_interval = 1.5f;
     float m_timer;
+
+    //スタミナ用のタイマー
+    float s_timer = 10.0f;
 
     bool backflg = false;
 
@@ -76,6 +79,18 @@ public class CharacterMovement : MonoBehaviour {
             movestate = MoveState.Back;
         }
 
+        //スタミナに応じて速度を調整する
+        s_timer -= Time.deltaTime;
+        if(s_timer > 6)
+        {
+            nav.speed = s_timer;
+        }
+        else
+        {
+            nav.speed = 3.0f;
+        }
+        //ランダム廃止
+        //   nav.speed = Random.Range(0.1f, 10.0f);
 
         switch (movestate)
         {

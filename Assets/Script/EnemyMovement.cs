@@ -21,7 +21,8 @@ public class EnemyMovement : MonoBehaviour {
     private List<GameObject> enemy_returnpointList = new List<GameObject>();
 
 
-
+    //スタミナ用のタイマー
+    float s_timer = 10.0f;
 
     bool backflg = false;
 
@@ -78,6 +79,18 @@ public class EnemyMovement : MonoBehaviour {
             movestate = MoveState.Back;
         }
 
+        //スタミナに応じて速度を調整する
+        s_timer -= Time.deltaTime;
+        if (s_timer > 6)
+        {
+            nav.speed = s_timer;
+        }
+        else
+        {
+            nav.speed = 3.0f;
+        }
+        //ランダム廃止
+        //   nav.speed = Random.Range(0.1f, 10.0f);
 
         switch (movestate)
         {
